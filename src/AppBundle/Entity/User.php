@@ -47,7 +47,17 @@ class User
     /**
      * @ORM\Column(type="string", nullable=false)
      */
+    private $password_hash;
+
+    /**
+     * @ORM\Column(type="string", nullable=false)
+     */
     private $phone;
+
+    /**
+     * @ORM\Column(type="smallint", nullable=false)
+     */
+    private $theme;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Project", mappedBy="user")
