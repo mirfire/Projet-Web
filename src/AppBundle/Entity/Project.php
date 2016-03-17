@@ -12,38 +12,38 @@ class Project
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @ORM\Column(type="text", nullable=false)
      */
-    private $description;
+    protected $description;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $media;
+    protected $media;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $link;
+    protected $link;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $sources;
+    protected $sources;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", inversedBy="project")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false, unique=true)
      */
-    private $user;
+    protected $user;
 
     /**
      * Get id

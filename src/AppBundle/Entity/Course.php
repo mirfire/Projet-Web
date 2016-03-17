@@ -12,38 +12,38 @@ class Course
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $description;
+    protected $description;
 
     /**
      * @ORM\Column(type="date", nullable=false)
      */
-    private $date;
+    protected $date;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $diploma;
+    protected $diploma;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $location;
+    protected $location;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="course")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
-    private $user;
+    protected $user;
 
     /**
      * Get id

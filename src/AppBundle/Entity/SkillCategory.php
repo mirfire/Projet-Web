@@ -12,23 +12,23 @@ class SkillCategory
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Skill", mappedBy="skillCategory")
      */
-    private $skill;
+    protected $skill;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="skillCategory")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
-    private $user;
+    protected $user;
     /**
      * Constructor
      */

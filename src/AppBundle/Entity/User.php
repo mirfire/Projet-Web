@@ -1,113 +1,101 @@
 <?php
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity
+ * @ORM\Table(name="users")
  */
-class User
+class User extends BaseUser
 {
     /**
      * @ORM\Id
      * @ORM\Column(type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $name;
+    protected $name;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $surname;
+    protected $surname;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $address;
+    protected $address;
 
     /**
      * @ORM\Column(type="integer", nullable=false)
      */
-    private $zip_code;
+    protected $zip_code;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $city;
-
-    /**
-     * @ORM\Column(type="string", unique=true, nullable=false)
-     */
-    private $email;
+    protected $city;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $password_hash;
+    protected $password_hash;
 
     /**
      * @ORM\Column(type="string", nullable=false)
      */
-    private $phone;
+    protected $phone;
 
     /**
      * @ORM\Column(type="smallint", nullable=false)
      */
-    private $theme;
+    protected $theme;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Project", mappedBy="user")
      */
-    private $project;
+    protected $project;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Skill", mappedBy="user")
      */
-    private $skill;
+    protected $skill;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\SkillCategory", mappedBy="user")
      */
-    private $skillCategory;
+    protected $skillCategory;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Course", mappedBy="user")
      */
-    private $course;
+    protected $course;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Experience", mappedBy="user")
      */
-    private $experience;
+    protected $experience;
 
     /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\AcquiredSkill", mappedBy="user")
      */
-    private $acquiredSkill;
+    protected $acquiredSkill;
     /**
      * Constructor
      */
     public function __construct()
     {
+        parent::__construct();
         $this->skill = new \Doctrine\Common\Collections\ArrayCollection();
         $this->skillCategory = new \Doctrine\Common\Collections\ArrayCollection();
         $this->course = new \Doctrine\Common\Collections\ArrayCollection();
         $this->experience = new \Doctrine\Common\Collections\ArrayCollection();
         $this->acquiredSkill = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Get id
-     *
-     * @return integer 
-     */
-    public function getId()
-    {
-        return $this->id;
     }
 
     /**
@@ -223,29 +211,6 @@ class User
     public function getCity()
     {
         return $this->city;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string 
-     */
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     /**

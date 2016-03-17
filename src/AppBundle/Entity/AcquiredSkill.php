@@ -13,7 +13,7 @@ class AcquiredSkill
      * @ORM\JoinColumn(name="skill_id", referencedColumnName="id", nullable=false, unique=true)
      * @ORM\Id
      */
-    private $skill;
+    protected $skill;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Experience", inversedBy="acquiredSkill")
@@ -21,7 +21,7 @@ class AcquiredSkill
      * @ORM\JoinColumn(name="experience_id", referencedColumnName="id", nullable=false, unique=true)
      * @ORM\Id
      */
-    private $experience;
+    protected $experience;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="acquiredSkill")
@@ -29,7 +29,7 @@ class AcquiredSkill
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      * @ORM\Id
      */
-    private $user;
+    protected $user;
 
     /**
      * Set skill
