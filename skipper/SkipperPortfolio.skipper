@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<skipper version="3.2.6.1309" mvc="Symfony2" orm="Doctrine2" name="SkipperPortfolio" uuid="ee84d4e7-0e31-47ab-92c3-db135ac5a3cc">
+  <external-module storage-path="skipper.module.xml"/>
+  <visual-data>
+    <association uuid="6ad4336b-0028-410e-ae04-2866c56db943" color="#969696"/>
+    <association uuid="738ce305-6d99-4fac-a81d-739ea563ce09" color="#969696"/>
+    <association uuid="752a5d57-6ea5-459a-93ef-1faea9febdcc" color="#969696"/>
+    <association uuid="7c61f626-765c-4fb9-9405-204e76e88a14" color="#969696"/>
+    <association uuid="9c2e88ce-147e-42f4-9535-c4f5e4347371" color="#969696"/>
+    <association uuid="aef0b020-967a-4050-855c-e4259cae848c" color="#969696"/>
+    <association uuid="d428c49d-0063-469a-b719-0d66587e3a67" caption1-position-x="-3" caption1-position-y="3" center-position-x="0" center-position-y="0" color="#969696"/>
+    <association uuid="df985233-f4fc-48b1-bd56-73b05cbcab73" caption1-position-x="0" caption1-position-y="0" center-position-x="0" center-position-y="2" color="#969696"/>
+    <association uuid="e5a1552b-bf3e-4159-bc32-776e38d119f9" caption1-position-x="0" caption1-position-y="0" center-position-x="-12" center-position-y="0" color="#969696"/>
+    <module uuid="6414a464-4e31-4371-b1be-549b054f584b" position-x="-246" position-y="11"/>
+    <project uuid="ee84d4e7-0e31-47ab-92c3-db135ac5a3cc" size-x="257" size-x2="523" size-y="0" size-y2="701"/>
+  </visual-data>
+</skipper>
