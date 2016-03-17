@@ -3,11 +3,22 @@
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        {% stylesheets filter="scssphp" output="css/app.css"
+            "assets/scss/_bootstrap.scss"
+            "assets/scss/font-awesome.scss"
+            "assets/css/*.css"
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% javascripts filter="?jsqueeze" output="js/app.js"
+            "assets/js/jquery.js"
+            "assets/js/bootstrap.js"
+        %}
+            <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
     </body>
 </html>
