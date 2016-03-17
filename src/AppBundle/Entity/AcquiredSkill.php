@@ -9,19 +9,25 @@ class AcquiredSkill
 {
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Skill", inversedBy="acquiredSkill")
+     * 
      * @ORM\JoinColumn(name="skill_id", referencedColumnName="id", nullable=false, unique=true)
+     * @ORM\Id
      */
     private $skill;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Experience", inversedBy="acquiredSkill")
+     * 
      * @ORM\JoinColumn(name="experience_id", referencedColumnName="id", nullable=false, unique=true)
+     * @ORM\Id
      */
     private $experience;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="acquiredSkill")
+     * 
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * @ORM\Id
      */
     private $user;
 
