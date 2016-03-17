@@ -5,24 +5,43 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
+                    <span class="sr-only">Afficher le Menu</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Project name</a>
+                <a class="navbar-brand" href="#">E-Portfolio</a>
             </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" placeholder="Email" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" placeholder="Password" class="form-control">
-                    </div>
-                    <button type="submit" class="btn btn-success">Sign in</button>
-                </form>
-            </div><!--/.navbar-collapse -->
+            {% if app.user %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user"></i> Mon Compte <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="fa fa-user"></i> Profil</a></li>
+                            <li><a href="#"><i class="fa fa-check"></i> Compétences</a></li>
+                            <li><a href="#"><i class="fa fa-star"></i> Expériences</a></li>
+                            <li><a href="#"><i class="fa fa-graduation-cap"></i> Formations</a></li>
+                            <li><a href="#"><i class="fa fa-archive"></i> Projets</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="#"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            {% else %}
+                <div id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text" placeholder="Adresse Mail" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" placeholder="Mot de Passe" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-success">Connexion</button>
+                        <a class="btn btn-primary" href="/register" role="button">S'inscrire</a>
+                    </form>
+                </div>
+            {% endif %}
+
         </div>
     </nav>
 
@@ -54,51 +73,5 @@
                 <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
             </div>
         </div>
-
-        <hr>
-
-        <a class="btn btn-danger" href="#">
-            <i class="fa fa-trash-o fa-lg"></i> Delete</a>
-        <a class="btn btn-default btn-sm" href="#">
-            <i class="fa fa-cog"></i> Settings</a>
-
-        <a class="btn btn-lg btn-success" href="#">
-            <i class="fa fa-flag fa-2x pull-left"></i> Font Awesome<br>Version 4.5.0</a>
-
-        <div class="btn-group">
-            <a class="btn btn-default" href="#"><i class="fa fa-align-left"></i></a>
-            <a class="btn btn-default" href="#"><i class="fa fa-align-center"></i></a>
-            <a class="btn btn-default" href="#"><i class="fa fa-align-right"></i></a>
-            <a class="btn btn-default" href="#"><i class="fa fa-align-justify"></i></a>
-        </div>
-
-        <div class="input-group margin-bottom-sm">
-            <span class="input-group-addon"><i class="fa fa-envelope-o fa-fw"></i></span>
-            <input class="form-control" type="text" placeholder="Email address">
-        </div>
-        <div class="input-group">
-            <span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
-            <input class="form-control" type="password" placeholder="Password">
-        </div>
-
-        <div class="btn-group open">
-            <a class="btn btn-primary" href="#"><i class="fa fa-user fa-fw"></i> User</a>
-            <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#">
-                <span class="fa fa-caret-down"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="#"><i class="fa fa-pencil fa-fw"></i> Edit</a></li>
-                <li><a href="#"><i class="fa fa-trash-o fa-fw"></i> Delete</a></li>
-                <li><a href="#"><i class="fa fa-ban fa-fw"></i> Ban</a></li>
-                <li class="divider"></li>
-                <li><a href="#"><i class="i"></i> Make admin</a></li>
-            </ul>
-        </div>
-
-
-        <hr>
-
-        <footer>
-            <p>&copy; 2015 Company, Inc.</p>
-        </footer>
     </div>
 {% endblock %}
