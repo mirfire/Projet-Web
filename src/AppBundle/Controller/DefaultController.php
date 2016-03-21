@@ -26,10 +26,10 @@ class DefaultController extends Controller
       return $this->render('about.html.twig');
     }
     /**
-    *@Route("/research", name="research")
+    *@Route("/search", name="search")
     */
     public function researchAction()
     {
-      return $this->render('recherche.html.twig');
+      return $this->render('search.html.twig');
     }
 }
