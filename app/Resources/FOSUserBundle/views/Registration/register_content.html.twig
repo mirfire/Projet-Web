@@ -2,7 +2,7 @@
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
-    <div>
-        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    <div class="col-sm-offset-2">
+        <input class="btn btn-block btn-lg btn-success" type="submit" value="Inscription" />
     </div>
 {{ form_end(form) }}
