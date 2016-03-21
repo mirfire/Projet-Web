@@ -18,7 +18,7 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('icon', 'fa fa-list');
         $menu->addChild('Connexion', array('route' => 'fos_user_security_login'));
         $menu->addChild('Inscription', array('route' => 'fos_user_registration_register'));
-
+        $menu->addChild('A propos', array('route'=> 'about'));
         return $menu;
     }
 }
