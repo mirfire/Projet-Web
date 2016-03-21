@@ -1,23 +1,97 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Bienvenue à tous</h1>
-            <p>Bienvenue sur la maquette de l'EPortFolio, cet EportFolio est en test pour un projet demandé par l'Etat.
-                Pour d'ample informations aller dans la rubrique "plus d'informations", cliquez donc sur le lien ci dessous.  </p>
-            <p><a class="btn btn-primary btn-lg" href="about" role="button">plus d'informations &raquo;</a></p>
-        </div>
-    </div>
 
-    <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-            <div class="col-md-4">
-                <h2>Recherche d'Eportfolio</h2>
-                <p><a class="btn btn-default" href="#" role="button">Lancement de recherche &raquo;</a></p>
-            </div>
+    <img src="http://img.e-marketing.fr/Images/Breves/breve42460-0.JPG" alt="" class="img-circle">
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Mon Expérience
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        Exemple :
+        <br>
+        Année :  2013-2014
+        <br>
+        Poste : Architecte Batiment
+        <br>
+        Entreprise : Bloz
+        <br>
+        Détail de la mission : Plan détaillés des lieux
+        <br>
+        Lieu : Gaumont
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Ma formation
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+        Exemple :
+        <br>
+        Année : 2012-2013
+        <br>
+        Formation : XY
+        <br>
+        Diplôme : BAC +2.5
+        <br>
+        Lieu : ARRAS
+        <br>
+        Descriptif : Architecture infrastructure XO
+      </div>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingThree">
+      <h4 class="panel-title">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Mes projets
+        </a>
+      </h4>
+    </div>
+    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+      <div class="panel-body">
+        Exemple :
+        <br>
+        Nom du projet : Plan UI
+        <br>
+        Description :  Descriptionxxx
+        <br>
+        Illustration : <img src="http://img.e-marketing.fr/Images/Breves/breve42460-0.JPG" alt="" class="img-thumbnail">
+        <br>
+        Liens vers la réalisation :  http:abdel.com
+        <br>
+        Téléchargement du projet (Si disponible) :
         </div>
     </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingFour">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            Mes compétences
+          </a>
+        </h4>
+        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+          <div class="panel-body">
+            Catégorie :
+            <br>
+            Compétences associées :       (Barre de progression)
+            <br>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
 {% endblock %}
