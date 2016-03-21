@@ -3,9 +3,10 @@
 {% block body %}
         <div class="container text-center">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                Connnecté en tant que {{app.user.username}}
+                <br>
                 <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                    Se déconnecter
                 </a>
             {% else %}
                 {% if 'login' in app.request.get('_route')  %}
