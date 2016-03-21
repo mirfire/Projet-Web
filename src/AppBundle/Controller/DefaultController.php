@@ -38,16 +38,4 @@ class DefaultController extends Controller
     public function folioAction(){
       return $this->render('Portfolio.html.twig');
     }
-    /**
-    *@Route("/mfolio", name="Monfolio")
-    */
-    public function monfolioAction(){
-      return $this->render('Portfolio.html.twig');
-    }
-    /**
-    *@Route("/mcv", name="MonCv")
-    */
-    public function moncvAction(){
-      return $this->render('cv.html.twig');
-    }
 }
