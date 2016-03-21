@@ -68,7 +68,7 @@ class User extends BaseUser
     /**
      * @ORM\Column(type="smallint", nullable=false)
      */
-    protected $theme;
+    protected $theme = 0;
 
     /**
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Project", mappedBy="user")
