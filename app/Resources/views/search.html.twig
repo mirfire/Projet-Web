@@ -2,19 +2,16 @@
 
 {% block body %}
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Recherche d'un Profil</h1>
-    </div>
     <div class="container">
-    <form action="/ma-page-de-traitement" method="post">
-    <div>
-        <label for="nom">Nom Identifiant :</label>
-        <input type="text" id="nom" />
-    </div>
-    <div class="button">
-        <button type="submit">lancer la recherche</button>
-    </div>
-    </form>
+        <h1 class="text-center">Recherche d'un Profil</h1>
+        <form action="/ma-page-de-traitement" method="post">
+            <div>
+                <label for="nom">Nom Identifiant :</label>
+                <input type="text" id="nom"/>
+            </div>
+            <div class="button">
+                <button type="submit">lancer la recherche</button>
+            </div>
+        </form>
     </div>
 {% endblock %}
