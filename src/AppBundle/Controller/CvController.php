@@ -14,6 +14,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 
-class CvControlleur
+class CvController extends Controller
+{
+    /**
+     * @Route("/cv", name="cv")
+     */
+    public function cvAction(Request $request)
+    {
+        // replace this example code with whatever you need
+        return $this->render('cv.html.twig', array(
+            'base_dir' => realpath($this->container->getParameter('kernel.root_dir') . '/..'),
+        ));
+    }
+}
 
 
