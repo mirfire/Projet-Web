@@ -41,13 +41,13 @@ class DefaultController extends Controller
     /**
     *@Route("/mfolio", name="Monfolio")
     */
-    public function folioAction(){
+    public function monfolioAction(){
       return $this->render('Portfolio.html.twig');
     }
     /**
     *@Route("/mcv", name="MonCv")
     */
-    public function folioAction(){
+    public function moncvAction(){
       return $this->render('cv.html.twig');
     }
 }
