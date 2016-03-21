@@ -17,8 +17,7 @@
             {% include "menu.html.twig" %}
         {% endblock %}
         {% block body %}{% endblock %}
-        <div>test</div>
-        {% block footer %}{% endblock %}
+        {% include "footer.html.twig" %}
         {% javascripts filter="?jsqueeze" output="js/app.js"
             "assets/js/jquery.js"
             "assets/js/bootstrap.js"
