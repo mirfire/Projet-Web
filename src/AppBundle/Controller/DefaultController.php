@@ -32,4 +32,10 @@ class DefaultController extends Controller
     {
       return $this->render('search.html.twig');
     }
+    /**
+    *@Route("/folio", name="folio")
+    */
+    public function folioAction(){
+      return $this->render('Portfolio.html.twig');
+    }
 }
