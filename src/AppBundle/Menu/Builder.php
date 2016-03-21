@@ -20,6 +20,8 @@ class Builder implements ContainerAwareInterface
         // Si l'utilisateur est connecté est un
         if($this->container->get('security.authorization_checker')->isGranted('ROLE_USER')) {
             $menu->addChild('Mon Compte', array('route' => 'fos_user_profile_show'));
+            $menu->addChild('Mon CV', array('route' => 'cv'));
+            $menu->addChild('Mon Portfolio', array('route' => 'monfolio'));
         }
         else {
             $menu->addChild('Connexion', array('route' => 'fos_user_security_login'));
