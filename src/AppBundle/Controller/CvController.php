@@ -27,5 +27,3 @@ class CvController extends Controller
         ));
     }
 }
-
-
