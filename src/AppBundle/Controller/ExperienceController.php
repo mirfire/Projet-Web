@@ -112,7 +112,7 @@ class ExperienceController extends Controller
     {
         $Experience = new Experience();
         $em = $this->getDoctrine()->getManager();
-        $em->remove($Experience);
+        $em->delete($Experience);
         $em->flush();
 
         return $this->redirectToRoute('user_xp');

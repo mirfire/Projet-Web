@@ -72,7 +72,6 @@ class ProjectController extends Controller
     {
         $project = new Project();
         $em = $this->getDoctrine()->getManager();
-        $form = $this->removeForm($project);
         $em->delete($project);
         $em->flush();
     }
