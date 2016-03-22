@@ -4,7 +4,6 @@
     <entity name="\AppBundle\Entity\User" local-name="User" namespace="\AppBundle\Entity" uuid="79b920ad-2f3c-4c8c-954c-97af90ab4e82">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="bb723948-1403-42e4-9eb5-1ce23c92710f"/>
       <field name="email" type="string" required="true" unique="true" uuid="dff98fa1-1a61-4f89-b39d-ffbb2e3329e0"/>
-      <field name="password_hash" type="string" required="true" uuid="1313f0b0-0316-4ce2-96cc-c13ee288c7de"/>
       <field name="name" type="string" required="true" uuid="d8e42236-97f2-40bf-b973-e9443824de92"/>
       <field name="surname" type="string" required="true" uuid="71e3a621-e6d4-40ef-86d8-49b20dcce7b7"/>
       <field name="address" type="string" required="true" uuid="f59dd4e6-1618-47c0-a1ba-86ac9d49a3a9"/>
@@ -15,73 +14,73 @@
     </entity>
     <entity name="\AppBundle\Entity\Skill" local-name="Skill" namespace="\AppBundle\Entity" uuid="79605451-9701-49ad-add9-c5a118d7d3a7">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="ed3483a3-6bbb-4cef-a3e7-6e4d25053de6"/>
-      <field name="user_id" type="integer" required="true" uuid="4675c07a-c5b1-4ef7-b4f5-17ab05acdf99"/>
-      <field name="skill_category_id" type="integer" required="true" uuid="9d4610b3-af61-4ec0-990f-21675c98524f"/>
+      <field name="user_id" type="integer" uuid="4675c07a-c5b1-4ef7-b4f5-17ab05acdf99"/>
+      <field name="skill_category_id" type="integer" uuid="9d4610b3-af61-4ec0-990f-21675c98524f"/>
       <field name="name" type="string" required="true" uuid="1973f548-6a49-40ba-a9b2-363e9f7d81e3"/>
       <field name="level" type="smallint" required="true" uuid="2566128a-1b8b-49a4-8dd6-4ee471c6d89f"/>
     </entity>
-    <association from="\AppBundle\Entity\Skill" to="\AppBundle\Entity\User" caption="User Skill" owner-alias="skill" inverse-alias="user" many-owner="true" many-inverse="false" parent-required="true" uuid="d428c49d-0063-469a-b719-0d66587e3a67">
+    <association from="\AppBundle\Entity\Skill" to="\AppBundle\Entity\User" caption="User Skill" owner-alias="skill" inverse-alias="user" many-owner="true" many-inverse="false" uuid="d428c49d-0063-469a-b719-0d66587e3a67">
       <association-field from="user_id" to="id"/>
     </association>
-    <association from="\AppBundle\Entity\Skill" to="\AppBundle\Entity\SkillCategory" caption="SkillCategory Skill" owner-alias="skill" inverse-alias="skillCategory" many-owner="true" many-inverse="false" parent-required="true" uuid="7c61f626-765c-4fb9-9405-204e76e88a14">
+    <association from="\AppBundle\Entity\Skill" to="\AppBundle\Entity\SkillCategory" caption="SkillCategory Skill" owner-alias="skill" inverse-alias="skillCategory" many-owner="true" many-inverse="false" uuid="7c61f626-765c-4fb9-9405-204e76e88a14">
       <association-field from="skill_category_id" to="id"/>
     </association>
     <entity name="\AppBundle\Entity\SkillCategory" local-name="SkillCategory" namespace="\AppBundle\Entity" uuid="b950b69a-4617-4ec4-ad16-371bed0ac267">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="366bc5ca-3c51-4436-afd4-21c9b0a95b2b"/>
-      <field name="user_id" type="integer" required="true" uuid="f6854055-18c9-4d26-bb3d-a7c5680092b7"/>
+      <field name="user_id" type="integer" uuid="f6854055-18c9-4d26-bb3d-a7c5680092b7"/>
       <field name="name" type="string" required="true" uuid="5d9148ca-6b1b-424a-a1e5-daa2d27674c9"/>
     </entity>
-    <association from="\AppBundle\Entity\SkillCategory" to="\AppBundle\Entity\User" caption="User SkillCategory" owner-alias="skillCategory" inverse-alias="user" many-owner="true" many-inverse="false" parent-required="true" uuid="738ce305-6d99-4fac-a81d-739ea563ce09">
+    <association from="\AppBundle\Entity\SkillCategory" to="\AppBundle\Entity\User" caption="User SkillCategory" owner-alias="skillCategory" inverse-alias="user" many-owner="true" many-inverse="false" uuid="738ce305-6d99-4fac-a81d-739ea563ce09">
       <association-field from="user_id" to="id"/>
     </association>
     <entity name="\AppBundle\Entity\Course" local-name="Course" namespace="\AppBundle\Entity" uuid="65c7e8bf-a257-43ce-8816-4d5f4fd52352">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="f80322aa-19c8-4e8d-86d0-957d206879bd"/>
-      <field name="user_id" type="integer" required="true" uuid="f553d20b-25b3-4af2-ad8d-cf156ca74f46"/>
+      <field name="user_id" type="integer" uuid="f553d20b-25b3-4af2-ad8d-cf156ca74f46"/>
       <field name="name" type="string" required="true" uuid="7fd84d7b-6e21-44db-bd33-95703369ad8d"/>
       <field name="description" type="string" required="true" uuid="6a506863-7d42-48c9-b3ad-89fd27f51065"/>
       <field name="date" type="date" required="true" uuid="521c3387-6489-4a32-961c-add706a1b050"/>
       <field name="diploma" type="string" required="true" uuid="51dd1daa-f9eb-4882-bf61-92d0b67531a6"/>
       <field name="location" type="string" required="true" uuid="2af19eec-b812-4e86-93f1-a48bfae4b056"/>
     </entity>
-    <association from="\AppBundle\Entity\Course" to="\AppBundle\Entity\User" caption="User Course" owner-alias="course" inverse-alias="user" many-owner="true" many-inverse="false" parent-required="true" uuid="aef0b020-967a-4050-855c-e4259cae848c">
+    <association from="\AppBundle\Entity\Course" to="\AppBundle\Entity\User" caption="User Course" owner-alias="course" inverse-alias="user" many-owner="true" many-inverse="false" uuid="aef0b020-967a-4050-855c-e4259cae848c">
       <association-field from="user_id" to="id"/>
     </association>
     <entity name="\AppBundle\Entity\Experience" local-name="Experience" namespace="\AppBundle\Entity" uuid="f2971b53-83f7-4b9d-860b-2281c702f92e">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="8b129640-0901-4efb-abae-e02fb8a09d89"/>
-      <field name="user_id" type="integer" required="true" uuid="760f784d-8dfc-4bf9-86ee-dee4a09f7fa1"/>
+      <field name="user_id" type="integer" uuid="760f784d-8dfc-4bf9-86ee-dee4a09f7fa1"/>
       <field name="name" type="string" required="true" uuid="82bf75e8-1c64-4a42-89b1-c57a0534c9f2"/>
       <field name="position" type="string" required="true" uuid="153ff2f4-0cb7-4330-b5b7-8212f2cc8e2e"/>
       <field name="company" type="string" required="true" uuid="cf2cacf7-d68c-4585-bce6-c4f332dd9f5d"/>
       <field name="description" type="string" required="true" uuid="565685a3-99e0-4865-8923-44f320835d74"/>
       <field name="location" type="string" required="true" uuid="0a1c1531-64ca-48dc-9bc2-e423d5c4f138"/>
     </entity>
-    <association from="\AppBundle\Entity\Experience" to="\AppBundle\Entity\User" caption="User Experience" owner-alias="experience" inverse-alias="user" many-owner="true" many-inverse="false" parent-required="true" uuid="e5a1552b-bf3e-4159-bc32-776e38d119f9">
+    <association from="\AppBundle\Entity\Experience" to="\AppBundle\Entity\User" caption="User Experience" owner-alias="experience" inverse-alias="user" many-owner="true" many-inverse="false" uuid="e5a1552b-bf3e-4159-bc32-776e38d119f9">
       <association-field from="user_id" to="id"/>
     </association>
     <entity name="\AppBundle\Entity\AcquiredSkill" local-name="AcquiredSkill" namespace="\AppBundle\Entity" uuid="94ce14d5-4525-4981-9be0-f6c93d287c95">
-      <field name="skill_id" type="integer" required="true" unique="true" primary="true" uuid="c3148316-9d5d-481d-a1e4-9e109bd15b28"/>
+      <field name="skill_id" type="integer" unique="true" primary="true" uuid="c3148316-9d5d-481d-a1e4-9e109bd15b28"/>
       <field name="user_id" type="integer" required="true" primary="true" uuid="0336c031-abcf-41f2-a044-3a0d8e76594d"/>
-      <field name="experience_id" type="integer" required="true" unique="true" primary="true" uuid="d03667c9-8822-4b79-a956-8b39ab95306c"/>
+      <field name="experience_id" type="integer" unique="true" primary="true" uuid="d03667c9-8822-4b79-a956-8b39ab95306c"/>
     </entity>
-    <association from="\AppBundle\Entity\AcquiredSkill" to="\AppBundle\Entity\Skill" caption="Skill AcquiredSkill" owner-alias="acquiredSkill" inverse-alias="skill" many-owner="false" many-inverse="false" parent-required="true" uuid="9c2e88ce-147e-42f4-9535-c4f5e4347371">
+    <association from="\AppBundle\Entity\AcquiredSkill" to="\AppBundle\Entity\Skill" caption="Skill AcquiredSkill" owner-alias="acquiredSkill" inverse-alias="skill" many-owner="false" many-inverse="false" uuid="9c2e88ce-147e-42f4-9535-c4f5e4347371">
       <association-field from="skill_id" to="id"/>
     </association>
     <association from="\AppBundle\Entity\AcquiredSkill" to="\AppBundle\Entity\User" caption="User AcquiredSkill" owner-alias="acquiredSkill" inverse-alias="user" many-owner="true" many-inverse="false" parent-required="true" uuid="6ad4336b-0028-410e-ae04-2866c56db943">
       <association-field from="user_id" to="id"/>
     </association>
-    <association from="\AppBundle\Entity\AcquiredSkill" to="\AppBundle\Entity\Experience" caption="Experience AcquiredSkill" owner-alias="acquiredSkill" inverse-alias="experience" many-owner="false" many-inverse="false" parent-required="true" uuid="df985233-f4fc-48b1-bd56-73b05cbcab73">
+    <association from="\AppBundle\Entity\AcquiredSkill" to="\AppBundle\Entity\Experience" caption="Experience AcquiredSkill" owner-alias="acquiredSkill" inverse-alias="experience" many-owner="false" many-inverse="false" uuid="df985233-f4fc-48b1-bd56-73b05cbcab73">
       <association-field from="experience_id" to="id"/>
     </association>
     <entity name="\AppBundle\Entity\Project" local-name="Project" namespace="\AppBundle\Entity" uuid="1099ded6-f0e4-4213-8ad2-6bc85640e436">
       <field name="id" type="integer" required="true" unique="true" primary="true" auto-increment="true" uuid="55d4a4a0-00ef-4413-bfb1-4673c6aa6e61"/>
-      <field name="user_id" type="integer" required="true" unique="true" uuid="32755a31-b79c-4211-a1e4-c077c1186f77"/>
+      <field name="user_id" type="integer" uuid="32755a31-b79c-4211-a1e4-c077c1186f77"/>
       <field name="name" type="string" required="true" uuid="c03f5726-0cfe-4f25-917f-a8873f308c8d"/>
       <field name="description" type="text" required="true" uuid="2fbe112d-03a7-467a-9358-90c4c1576ec2"/>
       <field name="media" type="string" required="true" uuid="b151d0e5-6ef7-494c-b9a3-b5a8da984a76"/>
       <field name="link" type="string" required="true" uuid="74bd206a-0c15-4fd0-9df4-b54199a64b7b"/>
       <field name="sources" type="string" required="true" uuid="dbe837ea-1dee-4c1d-9ed7-fbcb460e1b76"/>
     </entity>
-    <association from="\AppBundle\Entity\Project" to="\AppBundle\Entity\User" caption="User Project" owner-alias="project" inverse-alias="user" many-owner="false" many-inverse="false" parent-required="true" uuid="752a5d57-6ea5-459a-93ef-1faea9febdcc">
+    <association from="\AppBundle\Entity\Project" to="\AppBundle\Entity\User" caption="User Project" owner-alias="project" inverse-alias="user" many-owner="true" many-inverse="false" uuid="752a5d57-6ea5-459a-93ef-1faea9febdcc">
       <association-field from="user_id" to="id"/>
     </association>
     <orm-attributes>
@@ -94,7 +93,7 @@
     <entity uuid="79605451-9701-49ad-add9-c5a118d7d3a7" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="93" position-y="398" size-x="0" size-x2="132" size-y="0" size-y2="87"/>
     <entity uuid="79b920ad-2f3c-4c8c-954c-97af90ab4e82" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="279" position-y="109" size-x="0" size-x2="98" size-y="0" size-y2="129"/>
     <entity uuid="94ce14d5-4525-4981-9be0-f6c93d287c95" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="348" position-y="414" size-x="0" size-x2="119" size-y="0" size-y2="59"/>
-    <entity uuid="b950b69a-4617-4ec4-ad16-371bed0ac267" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="48" position-y="240" size-x="0" size-x2="92" size-y="0" size-y2="59"/>
+    <entity uuid="b950b69a-4617-4ec4-ad16-371bed0ac267" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="21" position-y="172" size-x="0" size-x2="92" size-y="0" size-y2="59"/>
     <entity uuid="f2971b53-83f7-4b9d-860b-2281c702f92e" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="557" position-y="214" size-x="0" size-x2="102" size-y="0" size-y2="115"/>
     <module uuid="6414a464-4e31-4371-b1be-549b054f584b" bg-color="#E7F3E7" size-x="0" size-x2="699" size-y="0" size-y2="626"/>
   </visual-data>
