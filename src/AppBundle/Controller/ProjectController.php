@@ -6,69 +6,83 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+
 class ProjectController extends Controller
 {
-    public function AddProjectAction(Request $request)
-        {
-            $project = new project();
+    /**
+     * @Route("/project", name="user/project")
+     */
+    public function indexAction() {
 
-            $em = $this->getDoctrine()->getManager();
-            $project->setProfil($this->getUser()->getProfil());
-            $form = $this->createForm(new projectType(), $project);
-            $form->handleRequest($request);
+    }
+    
+    /**
+     * @Route("/project/add", name="user/project/add")
+     */
+    public function addAction(Request $request)
+    {
+        $project = new Project();
 
-            if ($form->isValid())
-            {
-                $em->persist($project);
-                $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $project->setProfil($this->getUser()->getProfil());
+        $form = $this->createForm(new ProjectType(), $project);
+        $form->handleRequest($request);
 
-                $request->getSession()->getFlashBag()->add('notice', 'Projet cree.');
+        if ($form->isValid()) {
+            $em->persist($project);
+            $em->flush();
 
-                return $this->redirect($this->generateUrl('project'));
-            }
+            $request->getSession()->getFlashBag()->add('notice', 'Projet cree.');
 
-            return $this->render('add-project.html.twig', array('form' => $form->createView()) );
+            return $this->redirect($this->generateUrl('Project'));
         }
 
-    public function EditProjectAction(Request $request)
-          {
-                $project = new project();
+        return $this->render('project-add.html.twig', array('form' => $form->createView()));
+    }
 
-                $em = $this->getDoctrine()->getManager();
-                $form = $this->editForm($project);
-                $form->handleRequest($request);
+    /**
+     * @Route("/project/edit", name="user/project/edit")
+     */
+    public function editAction(Request $request)
+    {
+        $project = new Project();
 
-                if ($form->isValid())
-                {
-                    $em->persist($project);
-                    $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->editForm($project);
+        $form->handleRequest($request);
 
-                    $request->getSession()->getFlashBag()->edit('notice', 'Projet enregistree.');
+        if ($form->isValid()) {
+            $em->persist($project);
+            $em->flush();
 
-                    return $this->redirect($this->generateUrl('project'));
-                }
+            $request->getSession()->getFlashBag()->edit('notice', 'Projet enregistree.');
 
-                return $this->render('edit-project.html.twig', array('form' => $form->createView()) );
-          }
+            return $this->redirect($this->generateUrl('Project'));
+        }
 
-    public function RemoveProjectAction(Request $request)
-                {
-                    $project = new project();
+        return $this->render('project-edit.html.twig', array('form' => $form->createView()));
+    }
 
-                    $em = $this->getDoctrine()->getManager();
-                    $form = $this->removeForm($project);
-                    $form->handleRequest($request);
+    /**
+     * @Route("/project/delete", name="user/project/delete")
+     */
+    public function deleteAction(Request $request)
+    {
+        $project = new Project();
 
-                    if ($form->isValid())
-                    {
-                        $em->remove($project);
-                        $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->deleteForm($project);
+        $form->handleRequest($request);
 
-                        $request->getSession()->getFlashBag()->remove('notice', 'Projet Supprimee.');
+        if ($form->isValid()) {
+            $em->delete($project);
+            $em->flush();
 
-                        return $this->redirect($this->generateUrl('project'));
-                    }
+            $request->getSession()->getFlashBag()->delete('notice', 'Projet Supprimee.');
 
-                    return $this->render('remove-project.html.twig', array('form' => $form->createView()) );
-                }
+            return $this->redirect($this->generateUrl('Project'));
+        }
+
+        return $this->render('project-delete.html.twig', array('form' => $form->createView()));
+    }
 }

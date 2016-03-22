@@ -27,12 +27,12 @@ class Builder implements ContainerAwareInterface
                 ->setAttribute('icon', 'fa fa-user');
             $menu['Mon Compte']->addChild('Mes Compétences', array('route' => /*'user_skills'*/ 'fos_user_profile_show'))
                 ->setAttribute('icon', 'fa fa-star');
-            $menu['Mon Compte']->addChild('Mes Projets', array('route' => /*'user_projects'*/ 'fos_user_profile_show'))
-                ->setAttribute('icon', 'fa fa-archive');
-            $menu['Mon Compte']->addChild('Mes Formations', array('route' => /*'user_courses'*/ 'fos_user_profile_show'))
-                ->setAttribute('icon', 'fa fa-graduation-cap');
             $menu['Mon Compte']->addChild('Mes Expérience', array('route' => /*'user_experiences'*/ 'fos_user_profile_show'))
                 ->setAttribute('icon', 'fa fa-briefcase');
+            $menu['Mon Compte']->addChild('Mes Formations', array('route' => /*'user_courses'*/ 'fos_user_profile_show'))
+                ->setAttribute('icon', 'fa fa-graduation-cap');
+            $menu['Mon Compte']->addChild('Mes Projets', array('route' => /*'user_projects'*/ 'fos_user_profile_show'))
+                ->setAttribute('icon', 'fa fa-archive');
             $menu['Mon Compte']->addChild('Déconnexion', array('route' => 'fos_user_security_logout'))
                 ->setAttribute('icon', 'fa fa-sign-in')
                 ->setAttribute('divider_prepend', true);

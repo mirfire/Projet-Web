@@ -38,4 +38,8 @@ class DefaultController extends Controller
     public function folioAction(){
       return $this->render('Portfolio.html.twig');
     }
+
+  public function resultsAction(){
+    return $this->render('results.html.twig');
+  }
 }

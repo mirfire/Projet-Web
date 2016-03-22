@@ -2,73 +2,89 @@
 
 namespace AppBundle\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Entity\Skill;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 class SkillController extends Controller
 {
-    public function AddSkillAction(Request $request)
-        {
-            $skill = new skill();
+    /**
+     * @Route("/skill/", name="user_skill")
+     */
+    public function indexAction(Request $request)
+    {
 
-            $em = $this->getDoctrine()->getManager();
-            $skill->setProfil($this->getUser()->getProfil());
-            $form = $this->createForm(new skillType(), $skill);
-            $form->handleRequest($request);
+    }
 
-            if ($form->isValid())
-            {
-                $em->persist($skill);
-                $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Competence cree.');
+    /**
+     * @Route("/skill/add", name="user_skill_add")
+     */
+    public function addAction(Request $request)
+    {
+        $skill = new Skill();
 
-                return $this->redirect($this->generateUrl('skill'));
-            }
+        $em = $this->getDoctrine()->getManager();
+        $skill->setUser($this->getUser());
+        $form = $this->createForm(new Skill(), $skill);
+        $form->handleRequest($request);
 
-            return $this->render('add-skill.html.twig', array('form' => $form->createView()) );
+        if ($form->isValid()) {
+            $em->persist($skill);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->add('notice', 'Competence cree.');
+
+            return $this->redirect($this->generateUrl('skill'));
         }
 
-    public function EditSkillAction(Request $request)
-          {
-                $skill = new skill();
+        return $this->render('skill-add.html.twig', array('form' => $form->createView()));
+    }
 
-                $em = $this->getDoctrine()->getManager();
-                $form = $this->editForm($skill);
-                $form->handleRequest($request);
+    /**
+     * @Route("/skill/edit/{id}", name="user_skill_edit")
+     */
+    public function editAction(Request $request, $id)
+    {
+        $skill = new Skill();
 
-                if ($form->isValid())
-                {
-                    $em->persist($skill);
-                    $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->editForm($skill);
+        $form->handleRequest($request);
 
-                    $request->getSession()->getFlashBag()->edit('notice', 'Competence enregistree.');
+        if ($form->isValid()) {
+            $em->persist($skill);
+            $em->flush();
 
-                    return $this->redirect($this->generateUrl('skill'));
-                }
+            $request->getSession()->getFlashBag()->edit('notice', 'Competence enregistree.');
 
-                return $this->render('edit-skill.html.twig', array('form' => $form->createView()) );
-          }
+            return $this->redirect($this->generateUrl('skill'));
+        }
 
-    public function RemoveSkillAction(Request $request)
-                {
-                    $skill = new skill();
+        return $this->render('skill-edit.html.twig', array('form' => $form->createView()));
+    }
 
-                    $em = $this->getDoctrine()->getManager();
-                    $form = $this->removeForm($skill);
-                    $form->handleRequest($request);
+    /**
+     * @Route("/skill/delete/{id}", name="user_skill_delete")
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $skill = new Skill();
 
-                    if ($form->isValid())
-                    {
-                        $em->remove($skill);
-                        $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->deleteForm($skill);
+        $form->handleRequest($request);
 
-                        $request->getSession()->getFlashBag()->remove('notice', 'Competence Supprimee.');
+        if ($form->isValid()) {
+            $em->delete($skill);
+            $em->flush();
 
-                        return $this->redirect($this->generateUrl('skill'));
-                    }
+            $request->getSession()->getFlashBag()->delete('notice', 'Competence Supprimee.');
 
-                    return $this->render('remove-skill.html.twig', array('form' => $form->createView()) );
-                }
+            return $this->redirect($this->generateUrl('skill'));
+        }
+
+        return $this->render('skill-delete.html.twig', array('form' => $form->createView()));
+    }
 }
