@@ -32,19 +32,23 @@ class SkillController extends Controller
         $Skill = new Skill();
         $Skill->setUser($this->getUser());
         $form_skill = $this->createFormBuilder($Skill)
-            ->add('name', TextType::class)
+            ->add('name', TextType::class, array(
+                'label' => 'Nom'
+            ))
             ->add('level', ChoiceType::class, array(
                 'choices' => array(
-                    1,
-                    2,
-                    3,
-                    4,
-                    5,
-                )
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                ),
+                'label' => 'Niveau'
             ))
             ->add('skill_category', EntityType::class, array(
                 'class' => 'AppBundle:SkillCategory',
                 'choice_label' => 'name',
+                'label' => 'Catégorie',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.name', 'ASC');
@@ -77,7 +81,9 @@ class SkillController extends Controller
             ->getRepository('AppBundle:Skill')
             ->find($id);
         $form_skill = $this->createFormBuilder($Skill)
-            ->add('name', TextType::class)
+            ->add('name', TextType::class, array(
+                'label' => 'Nom'
+            ))
             ->add('level', ChoiceType::class, array(
                 'choices' => array(
                     '1' => 1,
@@ -85,11 +91,13 @@ class SkillController extends Controller
                     '3' => 3,
                     '4' => 4,
                     '5' => 5,
-                )
+                ),
+                'label' => 'Niveau'
             ))
             ->add('skill_category', EntityType::class, array(
                 'class' => 'AppBundle:SkillCategory',
                 'choice_label' => 'name',
+                'label' => 'Catégorie',
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->orderBy('u.name', 'ASC');
@@ -120,7 +128,6 @@ class SkillController extends Controller
     {
         $skill = new Skill();
         $em = $this->getDoctrine()->getManager();
-        $form = $this->deleteForm($skill);
         $em->delete($skill);
         $em->flush();
     }
@@ -133,8 +140,12 @@ class SkillController extends Controller
         $SkillCategory = new SkillCategory();
         $SkillCategory->setUser($this->getUser());
         $form_category = $this->createFormBuilder($SkillCategory)
-            ->add('name', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Créer la Catégorie'))
+            ->add('name', TextType::class, array(
+                'label' => 'Nom'
+            ))
+            ->add('save', SubmitType::class, array(
+                'label' => 'Créer la Catégorie'
+            ))
             ->getForm();
 
         $form_category->handleRequest($request);
@@ -175,8 +186,12 @@ class SkillController extends Controller
             ->getRepository('AppBundle:SkillCategory')
             ->find($id);
         $form_category = $this->createFormBuilder($SkillCategory)
-            ->add('name', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Éditer la Catégorie'))
+            ->add('name', TextType::class, array(
+                'label' => 'Nom'
+            ))
+            ->add('save', SubmitType::class, array(
+                'label' => 'Éditer la Catégorie'
+            ))
             ->getForm();
 
         $form_category->handleRequest($request);
