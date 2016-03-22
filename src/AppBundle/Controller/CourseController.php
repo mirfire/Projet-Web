@@ -19,59 +19,87 @@ class CourseController extends Controller
     /**
      * @Route("/course/add", name="user_course_add")
      */
-    public function addAction(Request $request)
-    {
-        $course = new Course();
+     public function addAction(Request $request)
+     {
+         $Course = new Course();
+         $Course->setUser($this->getUser());
+         $form_course = $this->createFormBuilder($Course)
+         ->add('name', TextType::class, array(
+           'label' => 'Nom'))
+         ->add('description', TextType::class, array(
+           'label' => 'Description'))
+         ->add('date', TextType::class, array(
+           'label' => 'Date de la formation'))
+         ->add('diploma', TextType::class, array(
+           'label' => 'Diplôme'))
+         ->add('location', TextType::class, array(
+           'label' => 'Lieu'))
+          ->add('save', SubmitType::class, array(
+           'label' => 'Ajouter la formation'))
+          ->getForm();
 
-        $em = $this->getDoctrine()->getManager();
-        $course->setUser($this->getUser());
-        $form = $this->createForm(new CourseType(), $course);
-        $form->handleRequest($request);
+         $form_course->handleRequest($request);
+         if ($form_course->isSubmitted() && $form_course->isValid()) {
+             $Course = $form_course->getData();
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($Course);
+             $em->flush();
 
-        if ($form->isValid()) {
+             return $this->redirectToRoute('user_course');
+         }
 
-            $em->persist($course);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->add('notice', 'Formation cree.');
-
-            return $this->render('default/index.html.twig');
-        }
-        return $this->render('userspace/course/add.html.twig', array('form' => $form->createView()));
-    }
+         return $this->render('userspace/course/add.html.twig', array(
+             'form' => $form_course->createView(),
+         ));
+     }
 
     /**
      * @Route("/course/edit/{id}", name="user_course_edit")
      */
-    public function editAction(Request $request, $id)
-    {
-        $course = new Course();
+     public function editAction(Request $request, $id)
+     {
+         $Course = $product = $this->getDoctrine()
+             ->getRepository('AppBundle:Course')
+             ->find($id);
+         $form_course = $this->createFormBuilder($Course)
+             ->add('name', TextType::class, array(
+               'label' => 'Nom'))
+             ->add('description', TextType::class, array(
+               'label' => 'Description'))
+             ->add('date', TextType::class, array(
+               'label' => 'Date de la formation'))
+             ->add('diploma', TextType::class, array(
+               'label' => 'Diplôme'))
+             ->add('location', TextType::class, array(
+               'label' => 'Lieu'))
+             ->add('save', SubmitType::class, array(
+               'label' => 'Ajouter la formation'))
+             ->getForm();
 
-        $em = $this->getDoctrine()->getManager();
-        $form = $this->editForm($course);
-        $form->handleRequest($request);
+         $form_course->handleRequest($request);
+         if ($form_course->isSubmitted() && $form_course->isValid()) {
+             $Course = $form_course->getData();
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($Course);
+             $em->flush();
 
-        if ($form->isValid()) {
-            $em->persist($course);
-            $em->flush();
+             return $this->redirectToRoute('user_course');
+         }
 
-            $request->getSession()->getFlashBag()->edit('notice', 'Formation enregistree.');
+         return $this->render('userspace/course/add.html.twig', array(
+             'form' => $form_course->createView(),
+         ));
+     }
 
-            return $this->redirect($this->generateUrl('Course'));
-        }
-
-        return $this->render('userspace/skill/edit.html.twig', array('form' => $form->createView()));
-    }
 
     /**
      * @Route("/course/delete/{id}", name="user_course_delete")
      */
-    public function deleteAction(Request $request, $id)
-    {
-        $course = new Course();
-        $em = $this->getDoctrine()->getManager();
-        $form = $this->removeForm($course);
-        $em->delete($course);
-        $em->flush();
-    }
+     public function deleteAction(Request $request, $id)
+     {
+         $course= new Course();
+         $em = $this->getDoctrine()->getManager();
+         $em->delete($course);
+         $em->flush();
+     }
 }
