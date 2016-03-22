@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <section class="container">
+    <h2 class="text-center">Expériences</h2>
+
+    {% if user.xp.count == 0 %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Mince !</strong> Aucune expérience n'a pu être trouvée.
+      </div>
+    {% else %}
+      <table>
+        <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Poste</th>
+          <th>Entreprise</th>
+          <th>Description</th>
+          <th>Lieu</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for xp in user.xp %}
+        <tr>
+          <td>xp.name</td>
+          <td>xp.position</td>
+          <td>xp.company</td>
+          <td>xp.description</td>
+          <td>xp.location</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </section>
+{% endblock %}

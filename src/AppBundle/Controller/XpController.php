@@ -13,7 +13,7 @@ class XpController extends Controller
      */
     public function indexAction()
     {
-
+        return $this->render('userspace/xp.html.twig', array('user' => $this->getUser()));
     }
 
     /**
@@ -69,9 +69,22 @@ class XpController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $xp = new Xp();
+
         $em = $this->getDoctrine()->getManager();
         $form = $this->deleteForm($xp);
         $em->delete($xp);
         $em->flush();
+        $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            $em->delete($xp);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->delete('notice', 'Experience Supprimee.');
+
+            return $this->redirect($this->generateUrl('Xp'));
+        }
+
+        return $this->render('xp-delete.html.twig', array('form' => $form->createView()));
     }
 }
