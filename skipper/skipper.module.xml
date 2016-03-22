@@ -88,13 +88,13 @@
     </orm-attributes>
   </module>
   <visual-data>
-    <entity uuid="1099ded6-f0e4-4213-8ad2-6bc85640e436" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="50" position-y="44" size-x="0" size-x2="95" size-y="0" size-y2="115"/>
+    <entity uuid="1099ded6-f0e4-4213-8ad2-6bc85640e436" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="20" position-y="24" size-x="0" size-x2="95" size-y="0" size-y2="115"/>
     <entity uuid="65c7e8bf-a257-43ce-8816-4d5f4fd52352" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="557" position-y="65" size-x="0" size-x2="102" size-y="0" size-y2="115"/>
-    <entity uuid="79605451-9701-49ad-add9-c5a118d7d3a7" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="93" position-y="398" size-x="0" size-x2="132" size-y="0" size-y2="87"/>
+    <entity uuid="79605451-9701-49ad-add9-c5a118d7d3a7" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="95" position-y="397" size-x="0" size-x2="132" size-y="0" size-y2="87"/>
     <entity uuid="79b920ad-2f3c-4c8c-954c-97af90ab4e82" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="279" position-y="109" size-x="0" size-x2="98" size-y="0" size-y2="129"/>
     <entity uuid="94ce14d5-4525-4981-9be0-f6c93d287c95" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="348" position-y="414" size-x="0" size-x2="119" size-y="0" size-y2="59"/>
-    <entity uuid="b950b69a-4617-4ec4-ad16-371bed0ac267" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="21" position-y="172" size-x="0" size-x2="92" size-y="0" size-y2="59"/>
+    <entity uuid="b950b69a-4617-4ec4-ad16-371bed0ac267" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="19" position-y="152" size-x="0" size-x2="92" size-y="0" size-y2="59"/>
     <entity uuid="f2971b53-83f7-4b9d-860b-2281c702f92e" bg-color="#FFFFFF" hdr-color="#D2D2D2" position-x="557" position-y="214" size-x="0" size-x2="102" size-y="0" size-y2="115"/>
-    <module uuid="6414a464-4e31-4371-b1be-549b054f584b" bg-color="#E7F3E7" size-x="0" size-x2="699" size-y="0" size-y2="626"/>
+    <module uuid="6414a464-4e31-4371-b1be-549b054f584b" bg-color="#FFFFFF" size-x="0" size-x2="699" size-y="0" size-y2="626"/>
   </visual-data>
 </skipper>
