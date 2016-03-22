@@ -8,18 +8,20 @@
         <strong>Mince !</strong> Aucune compétence n'a pu être trouvée.
       </div>
     {% else %}
-      <table>
+      <table class="table">
         <thead>
         <tr>
           <th>Nom</th>
           <th>Niveau</th>
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
         {% for skill in user.skill %}
         <tr>
-          <td>skill.name</td>
-          <td>skill.level</td>
+          <td>{{ skill.name }}</td>
+          <td>{{ skill.level }}</td>
+          <td><a href="{{ path('user_skill_delete', {'id':skill.id}) }}"><i class="fa fa-3x fa-times"></i></a> <a href="{{ path('user_skill_edit', {'id':skill.id}) }}"><i class="fa fa-3x fa-edit"></i></a></td>
         </tr>
         {% endfor %}
         </tbody>
@@ -33,18 +35,18 @@
         <strong>Mince !</strong> Aucun groupe de compétences n'a pu être trouvé.
       </div>
     {% else %}
-      <table>
+      <table class="table">
         <thead>
         <tr>
           <th>Nom</th>
-          <th>Niveau</th>
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
         {% for skill in user.skillcategory %}
           <tr>
-            <td>skill.name</td>
-            <td>skill.level</td>
+            <td>{{ skill.name }}</td>
+            <td><a href="{{ path('user_skill_category_delete', {'id':skill.id}) }}"><i class="fa fa-3x fa-times"></i></a> <a href="{{ path('user_skill_category_edit', {'id':skill.id}) }}"><i class="fa fa-3x fa-edit"></i></a></td>
           </tr>
         {% endfor %}
         </tbody>

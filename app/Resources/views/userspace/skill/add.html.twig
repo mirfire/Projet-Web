@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-  {{ form_start(form_category) }}
-  {{ form_widget(form_category) }}
-  {{ form_end(form_category) }}
+<div class="container">
+  <h2 class="text-center">Ajout de Compétences</h2>
+  {{ form_start(form) }}
+  {{ form_widget(form) }}
+  {{ form_end(form) }}
+</div>
 {% endblock %}
