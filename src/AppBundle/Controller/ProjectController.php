@@ -1,16 +1,17 @@
 <?php
-
 namespace AppBundle\Controller;
-
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Entity\Project;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
 
 class ProjectController extends Controller
 {
   /**
-   * @Route("project", name="user_project")
+   * @Route("project/", name="user_project")
    */
   public function indexAction()
   {
@@ -71,7 +72,7 @@ class ProjectController extends Controller
     {
         $project = new Project();
         $em = $this->getDoctrine()->getManager();
-        $form = $this->deleteForm($project);
+        $form = $this->removeForm($project);
         $em->delete($project);
         $em->flush();
     }

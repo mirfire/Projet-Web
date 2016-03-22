@@ -4,7 +4,7 @@
   <section class="container">
     <h2 class="text-center">Formation</h2>
 
-    {% if user.xp.count == 0 %}
+    {% if user.course.count == 0 %}
       <div class="alert alert-danger" role="alert">
         <strong>Mince !</strong> Aucune Formation n'a pu être trouvée.
       </div>
@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for xp in user.xp %}
+        {% for course in user.course %}
         <tr>
           <td>course.name</td>
           <td>course.description</td>

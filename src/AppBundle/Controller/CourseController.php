@@ -1,7 +1,5 @@
 <?php
-
 namespace AppBundle\Controller;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,7 +9,7 @@ use AppBundle\Form\CourseType;
 class CourseController extends Controller
 {
   /**
-   * @Route("/course", name="user_course")
+   * @Route("/course/", name="user_course")
    */
   public function indexAction()
   {
@@ -72,7 +70,7 @@ class CourseController extends Controller
     {
         $course = new Course();
         $em = $this->getDoctrine()->getManager();
-        $form = $this->deleteForm($course);
+        $form = $this->removeForm($course);
         $em->delete($course);
         $em->flush();
     }

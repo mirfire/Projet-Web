@@ -1,15 +1,16 @@
 <?php
 namespace AppBundle\Controller;
-
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use AppBundle\Entity\Xp;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
-
 
 class XpController extends Controller
 {
     /**
-     * @Route("/xp", name="user_xp")
+     * @Route("/xp/", name="user_xp")
      */
     public function indexAction()
     {
@@ -66,25 +67,12 @@ class XpController extends Controller
     /**
      * @Route("/xp/delete/{id}", name="user_xp_delete")
      */
-    public function deleteAction(Request $request, $id)
-    {
-        $xp = new Xp();
-
-        $em = $this->getDoctrine()->getManager();
-        $form = $this->deleteForm($xp);
-        $em->delete($xp);
-        $em->flush();
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em->delete($xp);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->delete('notice', 'Experience Supprimee.');
-
-            return $this->redirect($this->generateUrl('Xp'));
-        }
-
-        return $this->render('xp-delete.html.twig', array('form' => $form->createView()));
-    }
+     public function removeAction(Request $request, $id)
+     {
+         $project = new Project();
+         $em = $this->getDoctrine()->getManager();
+         $form = $this->removeForm($project);
+         $em->delete($project);
+         $em->flush();
+     }
 }

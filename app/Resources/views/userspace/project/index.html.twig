@@ -4,9 +4,9 @@
   <section class="container">
     <h2 class="text-center">Projets</h2>
 
-    {% if user.xp.count == 0 %}
+    {% if user.project.count == 0 %}
       <div class="alert alert-danger" role="alert">
-        <strong>Mince !</strong> Aucune projet n'a pu être trouvée.
+        <strong>Mince !</strong> Aucun projet n'a pu être trouvé.
       </div>
     {% else %}
       <table>
@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for xp in user.xp %}
+        {% for project in user.project %}
         <tr>
           <td>project.name</td>
           <td>project.description</td>
