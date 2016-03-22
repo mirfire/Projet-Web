@@ -10,12 +10,13 @@ use AppBundle\Form\CourseType;
 
 class CourseController extends Controller
 {
-    /**
-     * @Route("/course/", name="user_course")
-     */
-    public function indexAction(Request $request){
-
-    }
+  /**
+   * @Route("/course", name="user_course")
+   */
+  public function indexAction()
+  {
+      return $this->render('userspace/course/index.html.twig', array('user' => $this->getUser()));
+  }
 
     /**
      * @Route("/course/add", name="user_course_add")

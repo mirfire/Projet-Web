@@ -9,12 +9,13 @@ use Symfony\Component\HttpFoundation\Request;
 
 class ProjectController extends Controller
 {
-    /**
-     * @Route("/project", name="user_project")
-     */
-    public function indexAction() {
-
-    }
+  /**
+   * @Route("project", name="user_project")
+   */
+  public function indexAction()
+  {
+      return $this->render('userspace/project/index.html.twig', array('user' => $this->getUser()));
+  }
 
     /**
      * @Route("/project/add", name="user_project_add")

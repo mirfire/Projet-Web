@@ -13,7 +13,7 @@ class XpController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('userspace/index.html.twig', array('user' => $this->getUser()));
+        return $this->render('userspace/xp/index.html.twig', array('user' => $this->getUser()));
     }
 
     /**
