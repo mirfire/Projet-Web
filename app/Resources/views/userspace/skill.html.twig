@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <section class="container">
+    <h2 class="text-center">Compétences</h2>
+
+    {% if user.skill.count == 0 %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Mince !</strong> Aucune compétence n'a pu être trouvée.
+      </div>
+    {% else %}
+      <table>
+        <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Niveau</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for skill in user.skill %}
+        <tr>
+          <td>skill.name</td>
+          <td>skill.level</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </section>
+{% endblock %}

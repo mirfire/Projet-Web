@@ -14,7 +14,7 @@ class SkillController extends Controller
      */
     public function indexAction(Request $request)
     {
-
+        return $this->render('userspace/skill.html.twig', array('user' => $this->getUser()));
     }
 
 
