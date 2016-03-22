@@ -19,7 +19,7 @@ class CvController extends Controller
     /**
      * @Route("/cv/{username}", name="cv_index")
      */
-    public function indexAction(Request $request, $usernamae)
+    public function indexAction(Request $request, $username)
     {
         // replace this example code with whatever you need
         return $this->render('cv.html.twig', array(

@@ -6,11 +6,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-/**
- * @Route("/course", name="user/course")
- */
 class CourseController extends Controller
 {
+    /**
+     * @Route("/course/", name="user_course")
+     */
+    public function indexAction(Request $request){
+
+    }
+
     /**
      * @Route("/course/add", name="user_course_add")
      */
@@ -32,7 +36,7 @@ class CourseController extends Controller
             return $this->redirect($this->generateUrl('Course'));
         }
 
-        return $this->render('course-add.html.twig', array('form' => $form->createView()));
+        return $this->render('course-add', array('form' => $form->createView()));
     }
 
     /**

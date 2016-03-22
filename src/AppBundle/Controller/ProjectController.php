@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 class ProjectController extends Controller
 {
     /**
-     * @Route("/project", name="user/project")
+     * @Route("/project", name="user_project")
      */
     public function indexAction() {
 
     }
-    
+
     /**
      * @Route("/project/add", name="user/project/add")
      */
