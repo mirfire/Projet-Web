@@ -8,6 +8,8 @@
       <h2>Inscription</h2>
     {% elseif 'profile' in app.request.get('_route') %}
       <h2>Profil</h2>
+    {% elseif 'confirmed' in app.request.get('_route') %}
+      <h2>Inscription Confirmée</h2>
     {% else %}
       <h2>Erreur: Définition de connexion manquante</h2>
     {% endif %}
