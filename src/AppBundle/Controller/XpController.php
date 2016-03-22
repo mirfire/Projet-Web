@@ -13,7 +13,7 @@ class XpController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('userspace/xp.html.twig', array('user' => $this->getUser()));
+        return $this->render('userspace/index.html.twig', array('user' => $this->getUser()));
     }
 
     /**
@@ -37,7 +37,7 @@ class XpController extends Controller
             return $this->redirect($this->generateUrl('Xp'));
         }
 
-        return $this->render('xp-add.html.twig', array('form' => $form->createView()));
+        return $this->render('add.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -60,7 +60,7 @@ class XpController extends Controller
             return $this->redirect($this->generateUrl('Xp'));
         }
 
-        return $this->render('xp-edit.html.twig', array('form' => $form->createView()));
+        return $this->render('edit.html.twig', array('form' => $form->createView()));
     }
 
     /**

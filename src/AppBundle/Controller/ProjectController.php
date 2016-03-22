@@ -37,7 +37,7 @@ class ProjectController extends Controller
             return $this->redirect($this->generateUrl('Project'));
         }
 
-        return $this->render('project-add.html.twig', array('form' => $form->createView()));
+        return $this->render('add.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -60,7 +60,7 @@ class ProjectController extends Controller
             return $this->redirect($this->generateUrl('Project'));
         }
 
-        return $this->render('project-edit.html.twig', array('form' => $form->createView()));
+        return $this->render('edit.html.twig', array('form' => $form->createView()));
     }
 
     /**

@@ -14,7 +14,7 @@ class SkillController extends Controller
      */
     public function indexAction(Request $request)
     {
-        return $this->render('userspace/skill.html.twig', array('user' => $this->getUser()));
+        return $this->render('userspace/index.html.twig', array('user' => $this->getUser()));
     }
 
 
@@ -39,7 +39,7 @@ class SkillController extends Controller
             return $this->redirect($this->generateUrl('skill'));
         }
 
-        return $this->render('skill-add.html.twig', array('form' => $form->createView()));
+        return $this->render('add.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -62,7 +62,7 @@ class SkillController extends Controller
             return $this->redirect($this->generateUrl('skill'));
         }
 
-        return $this->render('skill-edit.html.twig', array('form' => $form->createView()));
+        return $this->render('edit.html.twig', array('form' => $form->createView()));
     }
 
     /**

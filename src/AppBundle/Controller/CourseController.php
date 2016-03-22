@@ -61,7 +61,7 @@ class CourseController extends Controller
             return $this->redirect($this->generateUrl('Course'));
         }
 
-        return $this->render('course-edit.html.twig', array('form' => $form->createView()));
+        return $this->render('edit.html.twig', array('form' => $form->createView()));
     }
 
     /**
