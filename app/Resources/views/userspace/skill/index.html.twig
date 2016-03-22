@@ -3,6 +3,7 @@
 {% block body %}
   <section class="container">
     <h2 class="text-center">Compétences</h2>
+    <a href="{{ path('user_skill_add') }}">Ajouter une Compétence</a>
     {% if user.skill.count == 0 %}
       <div class="alert alert-danger" role="alert">
         <strong>Mince !</strong> Aucune compétence n'a pu être trouvée.
@@ -29,6 +30,7 @@
     {% endif %}
     <hr>
     <h2 class="text-center">Groupes de Compétences</h2>
+    <a href="{{ path('user_skill_category_add') }}">Ajouter une Catégorie de Compétence</a>
     <form action="{{ path('user_skill_add') }}"></form>
     {% if user.skillcategory.count == 0 %}
       <div class="alert alert-danger" role="alert">

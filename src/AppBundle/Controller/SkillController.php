@@ -73,22 +73,44 @@ class SkillController extends Controller
      */
     public function editAction(Request $request, $id)
     {
-        $skill = new Skill();
+        $Skill = $product = $this->getDoctrine()
+            ->getRepository('AppBundle:Skill')
+            ->find($id);
+        $form_skill = $this->createFormBuilder($Skill)
+            ->add('name', TextType::class)
+            ->add('level', ChoiceType::class, array(
+                'choices' => array(
+                    '1' => 1,
+                    '2' => 2,
+                    '3' => 3,
+                    '4' => 4,
+                    '5' => 5,
+                )
+            ))
+            ->add('skill_category', EntityType::class, array(
+                'class' => 'AppBundle:SkillCategory',
+                'choice_label' => 'name',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->orderBy('u.name', 'ASC');
+                },
+            ))
+            ->add('save', SubmitType::class, array('label' => 'Éditer la Compétence'))
+            ->getForm();
 
-        $em = $this->getDoctrine()->getManager();
-        $form = $this->editForm($skill);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em->persist($skill);
+        $form_skill->handleRequest($request);
+        if ($form_skill->isSubmitted() && $form_skill->isValid()) {
+            $Skill = $form_skill->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Skill);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->edit('notice', 'Competence enregistree.');
-
-            return $this->redirect($this->generateUrl('skill'));
+            return $this->redirectToRoute('user_skill');
         }
 
-        return $this->render('edit.html.twig', array('form' => $form->createView()));
+        return $this->render('userspace/skill/add.html.twig', array(
+            'form' => $form_skill->createView(),
+        ));
     }
 
     /**
@@ -106,7 +128,8 @@ class SkillController extends Controller
     /**
      * @Route("/skill/category/add", name="user_skill_category_add")
      */
-    public function deleteCategoryAction(Request $request) {
+    public function addCategoryAction(Request $request)
+    {
         $SkillCategory = new SkillCategory();
         $SkillCategory->setUser($this->getUser());
         $form_category = $this->createFormBuilder($SkillCategory)
@@ -130,40 +153,30 @@ class SkillController extends Controller
     }
 
     /**
-     * @Route("/skill/category/edit", name="user_skill_category_edit")
+     * @Route("/skill/category/delete/{id}", name="user_skill_category_delete")
      */
-    public function editCategoryAction(Request $request) {
-        $SkillCategory = new SkillCategory();
-        $SkillCategory->setUser($this->getUser());
-        $form_category = $this->createFormBuilder($SkillCategory)
-            ->add('name', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Créer la Catégorie'))
-            ->getForm();
-
-        $form_category->handleRequest($request);
-        if ($form_category->isSubmitted() && $form_category->isValid()) {
-            $SkillCategory = $form_category->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($SkillCategory);
-            $em->flush();
-
-            return $this->redirectToRoute('user_skill');
-        }
-
-        return $this->render('userspace/skill/add.html.twig', array(
-            'form' => $form_category->createView(),
-        ));
+    public function deleteCategoryAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $SkillCategory = $product = $this->getDoctrine()
+            ->getRepository('AppBundle:SkillCategory')
+            ->find($id);
+        $em->remove($SkillCategory);
+        $em->flush();
+        return $this->redirectToRoute('user_skill');
     }
 
     /**
-     * @Route("/skill/category/delete", name="user_skill_category_delete")
+     * @Route("/skill/category/edit/{id}", name="user_skill_category_edit")
      */
-    public function addCategoryAction(Request $request) {
-        $SkillCategory = new SkillCategory();
-        $SkillCategory->setUser($this->getUser());
+    public function editCategoryAction(Request $request, $id)
+    {
+        $SkillCategory = $product = $this->getDoctrine()
+            ->getRepository('AppBundle:SkillCategory')
+            ->find($id);
         $form_category = $this->createFormBuilder($SkillCategory)
             ->add('name', TextType::class)
-            ->add('save', SubmitType::class, array('label' => 'Créer la Catégorie'))
+            ->add('save', SubmitType::class, array('label' => 'Éditer la Catégorie'))
             ->getForm();
 
         $form_category->handleRequest($request);
