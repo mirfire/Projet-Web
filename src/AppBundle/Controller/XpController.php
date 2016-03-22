@@ -31,7 +31,7 @@ class XpController extends Controller
                 return $this->redirect($this->generateUrl('Xp'));
             }
 
-            return $this->render('add-xp.html.twig', array('form' => $form->createView()) );
+            return $this->render('xp-add.html.twig', array('form' => $form->createView()) );
         }
         /**
         *@Route("/xp/edit", name="user/xp/edit")
@@ -54,29 +54,29 @@ class XpController extends Controller
                     return $this->redirect($this->generateUrl('Xp'));
                 }
 
-                return $this->render('edit-xp.html.twig', array('form' => $form->createView()) );
+                return $this->render('xp-edit.html.twig', array('form' => $form->createView()) );
           }
           /**
-          *@Route("/xp/remove", name="user/xp/remove")
+          *@Route("/xp/delete", name="user/xp/delete")
           */
-    public function RemoveXpAction(Request $request)
+    public function DeleteXpAction(Request $request)
                 {
                     $xp = new Xp();
 
                     $em = $this->getDoctrine()->getManager();
-                    $form = $this->removeForm($xp);
+                    $form = $this->deleteForm($xp);
                     $form->handleRequest($request);
 
                     if ($form->isValid())
                     {
-                        $em->remove($xp);
+                        $em->delete($xp);
                         $em->flush();
 
-                        $request->getSession()->getFlashBag()->remove('notice', 'Experience Supprimee.');
+                        $request->getSession()->getFlashBag()->delete('notice', 'Experience Supprimee.');
 
                         return $this->redirect($this->generateUrl('Xp'));
                     }
 
-                    return $this->render('remove-xp.html.twig', array('form' => $form->createView()) );
+                    return $this->render('xp-delete.html.twig', array('form' => $form->createView()) );
                 }
 }

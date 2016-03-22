@@ -32,7 +32,7 @@ class CourseController extends Controller
                 return $this->redirect($this->generateUrl('Course'));
             }
 
-            return $this->render('add-course.html.twig', array('form' => $form->createView()) );
+            return $this->render('course-add.html.twig', array('form' => $form->createView()) );
         }
         /**
         *@Route("/course/edit", name="user/course/edit")
@@ -55,29 +55,29 @@ class CourseController extends Controller
                     return $this->redirect($this->generateUrl('Course'));
                 }
 
-                return $this->render('edit-course.html.twig', array('form' => $form->createView()) );
+                return $this->render('course-edit.html.twig', array('form' => $form->createView()) );
           }
           /**
-          *@Route("/course/remove", name="user/course/remove")
+          *@Route("/course/delete", name="user/course/delete")
           */
-    public function RemoveCourseAction(Request $request)
+    public function DeleteCourseAction(Request $request)
                 {
                     $course = new Course();
 
                     $em = $this->getDoctrine()->getManager();
-                    $form = $this->removeForm($course);
+                    $form = $this->deleteForm($course);
                     $form->handleRequest($request);
 
                     if ($form->isValid())
                     {
-                        $em->remove($course);
+                        $em->delete($course);
                         $em->flush();
 
-                        $request->getSession()->getFlashBag()->remove('notice', 'Formation Supprimee.');
+                        $request->getSession()->getFlashBag()->delete('notice', 'Formation Supprimee.');
 
                         return $this->redirect($this->generateUrl('Course'));
                     }
 
-                    return $this->render('remove-course.html.twig', array('form' => $form->createView()) );
+                    return $this->render('course-delete.html.twig', array('form' => $form->createView()) );
                 }
 }

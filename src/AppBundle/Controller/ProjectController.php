@@ -32,7 +32,7 @@ class ProjectController extends Controller
                 return $this->redirect($this->generateUrl('Project'));
             }
 
-            return $this->render('add-project.html.twig', array('form' => $form->createView()) );
+            return $this->render('project-add.html.twig', array('form' => $form->createView()) );
         }
         /**
         *@Route("/project/edit", name="user/project/edit")
@@ -55,29 +55,29 @@ class ProjectController extends Controller
                     return $this->redirect($this->generateUrl('Project'));
                 }
 
-                return $this->render('edit-project.html.twig', array('form' => $form->createView()) );
+                return $this->render('project-edit.html.twig', array('form' => $form->createView()) );
           }
           /**
-          *@Route("/project/remove", name="user/project/remove")
+          *@Route("/project/delete", name="user/project/delete")
           */
-    public function RemoveProjectAction(Request $request)
+    public function DeleteProjectAction(Request $request)
                 {
                     $project = new Project();
 
                     $em = $this->getDoctrine()->getManager();
-                    $form = $this->removeForm($project);
+                    $form = $this->deleteForm($project);
                     $form->handleRequest($request);
 
                     if ($form->isValid())
                     {
-                        $em->remove($project);
+                        $em->delete($project);
                         $em->flush();
 
-                        $request->getSession()->getFlashBag()->remove('notice', 'Projet Supprimee.');
+                        $request->getSession()->getFlashBag()->delete('notice', 'Projet Supprimee.');
 
                         return $this->redirect($this->generateUrl('Project'));
                     }
 
-                    return $this->render('remove-project.html.twig', array('form' => $form->createView()) );
+                    return $this->render('project-delete.html.twig', array('form' => $form->createView()) );
                 }
 }
