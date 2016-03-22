@@ -1,14 +1,21 @@
 {% extends 'base.html.twig' %}
 
+{% block cvtheme %}
+  {% if app.security.token.user.theme == 1 %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/superhero/bootstrap.min.css">
+  {% endif %}
+{% endblock %}
+
 {% block body %}
 
-    <img src="http://img.e-marketing.fr/Images/Breves/breve42460-0.JPG" alt="" class="img-circle">
+<img src="http://img.e-marketing.fr/Images/Breves/breve42460-0.JPG" alt="" class="img-circle">
 
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
       <h4 class="panel-title">
-        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"
+           aria-expanded="true" aria-controls="collapseOne">
           Mon Expérience
         </a>
       </h4>
@@ -17,7 +24,7 @@
       <div class="panel-body">
         Exemple :
         <br>
-        Année :  2013-2014
+        Année : 2013-2014
         <br>
         Poste : Architecte Batiment
         <br>
@@ -32,7 +39,8 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingTwo">
       <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+           aria-expanded="false" aria-controls="collapseTwo">
           Ma formation
         </a>
       </h4>
@@ -56,7 +64,8 @@
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingThree">
       <h4 class="panel-title">
-        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+           aria-expanded="false" aria-controls="collapseThree">
           Mes projets
         </a>
       </h4>
@@ -67,19 +76,21 @@
         <br>
         Nom du projet : Plan UI
         <br>
-        Description :  Descriptionxxx
+        Description : Descriptionxxx
         <br>
-        Illustration : <img src="http://img.e-marketing.fr/Images/Breves/breve42460-0.JPG" alt="" class="img-thumbnail">
+        Illustration : <img src="http://img.e-marketing.fr/Images/Breves/breve42460-0.JPG" alt=""
+                            class="img-thumbnail">
         <br>
-        Liens vers la réalisation :  http:abdel.com
+        Liens vers la réalisation : http:abdel.com
         <br>
         Téléchargement du projet (Si disponible) :
-        </div>
+      </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading" role="tab" id="headingFour">
         <h4 class="panel-title">
-          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion"
+             href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
             Mes compétences
           </a>
         </h4>
@@ -87,11 +98,11 @@
           <div class="panel-body">
             Catégorie :
             <br>
-            Compétences associées :       (Barre de progression)
+            Compétences associées : (Barre de progression)
             <br>
           </div>
         </div>
       </div>
+    </div>
   </div>
-</div>
-{% endblock %}
+  {% endblock %}
