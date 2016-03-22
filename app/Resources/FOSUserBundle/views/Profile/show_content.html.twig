@@ -7,18 +7,6 @@
 
 
 <div class="row">
-    <div class="col-sm-9">
-        Modifications
-        <div class="row">
-            <div class="col-xs-8 col-sm-6">
-                <a class="btn btn-default" href="{{ path('search') }}" role="button">ceci n'est qu'un putain de fucking teste</a>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="row">
     <div class="col-md-9 col-md-push-3">
         <div class="panel-heading" role="tab" id="headingOne">
             <h4 class="panel-title">
@@ -99,11 +87,28 @@
 
 
 
-
-
     <div class="col-md-3 col-md-pull-9">
-        C'est ici que nous aurons tout les donnée du profil utilisateur
+        <p>{{ 'Prénom'|trans }}: {{ user.name }}</p>
+        <p>{{ 'Nom'|trans }}: {{ user.surname }}</p>
+        <p>{{ 'Email'|trans }}: {{ user.email }}</p>
+        <p>{{ 'télèphone'|trans }}: {{ user.phone }}</p>
+        <p>{{ 'Adresse'|trans }}: {{ user.address }}</p>
+        <p>{{ 'Code postal'|trans }}: {{ user.zipcode }}</p>
+        <p>{{ 'Ville'|trans }}: {{ user.city }}</p>
     </div>
 </div>
 
 
+<div class="row">
+    <div class="col-sm-9">
+        Page de profile
+        <div class="row">
+            <div class="col-xs-8 col-sm-6">
+                Level 2: .col-xs-8 .col-sm-6
+            </div>
+            <div class="col-xs-4 col-sm-6">
+                Level 2: .col-xs-4 .col-sm-6
+            </div>
+        </div>
+    </div>
+</div>
