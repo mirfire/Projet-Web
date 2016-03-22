@@ -97,20 +97,31 @@
               </div>
             </div>
           </div>
-                    <div class="col-md-4">
-                    <div class= "container">
-                        <strong>ajouter un message</strong>
+                <div class="col-md-4">
+                  <div class= "container">
+                      <strong>ajouter un message</strong>
                         <form action="index" method="post">
                             <div>
-                                <label for="message">message :</label>
-                                <input type="text" id="message"/>
+                                <label for="message">message :</label><br>
+                                <textarea name="message" id="message"></textarea>
                             </div>
                             <div class="button">
                                 <button type="submit">poster le message</button>
                             </div>
                         </form>
-        </div>
-      </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-md-push-8">
+                  <div class= "container">
+                      <strong>ajouter une image</strong>
+                      <input type="file" name="nom" />
+                      <form method="post" action="page.php" enctype="multipart/form-data">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="2^10" />
+                        <input type="submit" name="submit" value="Envoyer" />
+
+                      </form>
+                  </div>
+                </div>
     </div>
   </div>
 </div>
