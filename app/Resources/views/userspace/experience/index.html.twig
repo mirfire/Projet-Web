@@ -9,7 +9,7 @@
         <strong>Mince !</strong> Aucune expérience n'a pu être trouvée.
       </div>
     {% else %}
-      <table>
+      <table class="table">
         <thead>
         <tr>
           <th>Nom</th>
@@ -17,16 +17,18 @@
           <th>Entreprise</th>
           <th>Description</th>
           <th>Lieu</th>
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
-        {% for xp in user.experience %}
+        {% for experience in user.experience %}
         <tr>
-          <td>xp.name</td>
-          <td>xp.position</td>
-          <td>xp.company</td>
-          <td>xp.description</td>
-          <td>xp.location</td>
+          <td>{{ experience.name }}</td>
+          <td>{{ experience.position }}</td>
+          <td>{{ experience.company }}</td>
+          <td>{{ experience.description }}</td>
+          <td>{{ experience.location }}</td>
+          <td><a href="{{ path('user_experience_delete', {'id':experience.id}) }}"><i class="fa fa-3x fa-times"></i></a> <a href="{{ path('user_experience_edit', {'id':experience.id}) }}"><i class="fa fa-3x fa-edit"></i></a></td>
         </tr>
         {% endfor %}
         </tbody>
