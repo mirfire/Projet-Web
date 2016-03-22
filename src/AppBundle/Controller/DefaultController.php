@@ -38,36 +38,8 @@ class DefaultController extends Controller
     public function folioAction(){
       return $this->render('Portfolio.html.twig');
     }
-    public function viewAction($name)
 
-  {
-
-    // On récupère le repository
-
-    $repository = $this->getDoctrine()
-
-      ->getManager()
-
-      ->getRepository('AppBundle\Entity')
-
-    ;
-    // On récupère l'entité correspondante au nom $id
-
-    $advert = $repository->find($name);
-
-    // ou null si le nom  n'existe pas
-
-    if (null === $advert) {
-
-      throw new NotFoundHttpException("L'utilisateur: ".$name." n'existe pas.");
-
-    }
-
-    return $this->render('search.html.twig', array(
-
-      'advert' => $advert
-
-    ));
-
+  public function resultsAction(){
+    return $this->render('results.html.twig');
   }
 }
