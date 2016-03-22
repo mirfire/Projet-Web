@@ -437,4 +437,27 @@ class User extends BaseUser
     {
         return $this->acquiredSkill;
     }
+
+    /**
+     * Set theme
+     *
+     * @param integer $theme
+     * @return User
+     */
+    public function setTheme($theme)
+    {
+        $this->theme = $theme;
+
+        return $this;
+    }
+
+    /**
+     * Get theme
+     *
+     * @return integer 
+     */
+    public function getTheme()
+    {
+        return $this->theme;
+    }
 }
