@@ -68,20 +68,9 @@ class CourseController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $course = new Course();
-
         $em = $this->getDoctrine()->getManager();
         $form = $this->deleteForm($course);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em->delete($course);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->delete('notice', 'Formation Supprimee.');
-
-            return $this->redirect($this->generateUrl('Course'));
-        }
-
-        return $this->render('course-delete.html.twig', array('form' => $form->createView()));
+        $em->delete($course);
+        $em->flush();
     }
 }

@@ -71,20 +71,9 @@ class SkillController extends Controller
     public function deleteAction(Request $request, $id)
     {
         $skill = new Skill();
-
         $em = $this->getDoctrine()->getManager();
         $form = $this->deleteForm($skill);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em->delete($skill);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->delete('notice', 'Competence Supprimee.');
-
-            return $this->redirect($this->generateUrl('skill'));
-        }
-
-        return $this->render('skill-delete.html.twig', array('form' => $form->createView()));
+        $em->delete($skill);
+        $em->flush();
     }
 }

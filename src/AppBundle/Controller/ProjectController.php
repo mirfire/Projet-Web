@@ -69,20 +69,9 @@ class ProjectController extends Controller
     public function deleteAction(Request $request)
     {
         $project = new Project();
-
         $em = $this->getDoctrine()->getManager();
         $form = $this->deleteForm($project);
-        $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em->delete($project);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->delete('notice', 'Projet Supprimee.');
-
-            return $this->redirect($this->generateUrl('Project'));
-        }
-
-        return $this->render('project-delete.html.twig', array('form' => $form->createView()));
+        $em->delete($project);
+        $em->flush();
     }
 }
