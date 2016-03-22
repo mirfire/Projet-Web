@@ -1,17 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="container">
-        <h1 class="text-center">Recherche d'un Profil</h1>
-        <form action="/ma-page-de-traitement" method="post">
-            <div>
-                <label for="nom">Nom Identifiant :</label>
-                <input type="text" id="nom"/>
-            </div>
-            <div class="button">
-                <button type="submit">lancer la recherche</button>
-            </div>
-        </form>
-    </div>
+<h1 class="text-center">Modifier une formation</h1>
+<form action="" method="post">
+  <div>
+               <label>L'année/Les années</label>
+               <input type="Text" id="years"/>
+           </div>
+           <div>
+               <label>Titre de la formation</label>
+               <input type="Text" id="title"/>
+           </div>
+           <div>
+               <label>Diplôme</label>
+               <input type="Text" id="certificate"/>
+           </div>
+           <div>
+               <label>Lieu</label>
+               <input type="Text" id="place"/>
+           </div>
+           <div>
+               <label>Descriptif</label>
+               <input type="Text" id="description"/>
+           </div>
+           <div class="button">
+               <button type="submit">Lancer la modification</button>
+           </div>
+       </form>
+   </div>
 {% endblock %}
