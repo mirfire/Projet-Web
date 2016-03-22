@@ -1,5 +1,7 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
+{% block body %}
+
 <div class="row">
   <div class="col-sm-9">
     <div class="row">
@@ -95,8 +97,21 @@
               </div>
             </div>
           </div>
+                    <div class="col-md-4">
+                    <div class= "container">
+                        <strong>ajouter un message</strong>
+                        <form action="index" method="post">
+                            <div>
+                                <label for="message">message :</label>
+                                <input type="text" id="message"/>
+                            </div>
+                            <div class="button">
+                                <button type="submit">poster le message</button>
+                            </div>
+                        </form>
         </div>
       </div>
     </div>
   </div>
 </div>
+{% endblock %}
