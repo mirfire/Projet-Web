@@ -22,11 +22,11 @@
         <tbody>
         {% for project in user.project %}
         <tr>
-          <td>project.name</td>
-          <td>project.description</td>
-          <td>project.media</td>
-          <td>project.link</td>
-          <td>project.sources</td>
+          <td>{{ project.name }}</td>
+          <td>{{ project.description }}</td>
+          <td>{{ project.media }}</td>
+          <td>{{ project.link }}</td>
+          <td>{{ project.sources }}</td>
         </tr>
         {% endfor %}
         </tbody>

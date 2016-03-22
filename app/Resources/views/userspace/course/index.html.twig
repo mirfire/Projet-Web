@@ -22,11 +22,11 @@
         <tbody>
         {% for course in user.course %}
         <tr>
-          <td>course.name</td>
-          <td>course.description</td>
-          <td>course.date</td>
-          <td>course.certificate</td>
-          <td>course.location</td>
+          <td>{{ course.name }}</td>
+          <td>{{ course.description }}</td>
+          <td>{{ course.date }}</td>
+          <td>{{ course.certificate }}</td>
+          <td>{{ course.location }}</td>
         </tr>
         {% endfor %}
         </tbody>

@@ -66,13 +66,16 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/project/delete", name="user_project_delete")
+     * @Route("/project/delete/{id}", name="user_project_delete")
      */
-    public function deleteAction(Request $request)
+    public function deleteAction(Request $request, $id)
     {
-        $project = new Project();
         $em = $this->getDoctrine()->getManager();
-        $em->delete($project);
+        $Project = $this->getDoctrine()
+            ->getRepository('AppBundle:Experience')
+            ->find($id);
+        $em->remove($Project);
         $em->flush();
+        return $this->redirectToRoute('user_project');
     }
 }

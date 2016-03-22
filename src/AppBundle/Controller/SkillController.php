@@ -126,10 +126,13 @@ class SkillController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $skill = new Skill();
         $em = $this->getDoctrine()->getManager();
-        $em->delete($skill);
+        $Skill = $this->getDoctrine()
+            ->getRepository('AppBundle:Skill')
+            ->find($id);
+        $em->remove($Skill);
         $em->flush();
+        return $this->redirectToRoute('user_skill');
     }
 
     /**
@@ -169,7 +172,7 @@ class SkillController extends Controller
     public function deleteCategoryAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();
-        $SkillCategory = $product = $this->getDoctrine()
+        $SkillCategory = $this->getDoctrine()
             ->getRepository('AppBundle:SkillCategory')
             ->find($id);
         $em->remove($SkillCategory);
@@ -182,7 +185,7 @@ class SkillController extends Controller
      */
     public function editCategoryAction(Request $request, $id)
     {
-        $SkillCategory = $product = $this->getDoctrine()
+        $SkillCategory = $this->getDoctrine()
             ->getRepository('AppBundle:SkillCategory')
             ->find($id);
         $form_category = $this->createFormBuilder($SkillCategory)

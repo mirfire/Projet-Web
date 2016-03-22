@@ -73,7 +73,7 @@ class CourseController extends Controller
              ->add('location', TextType::class, array(
                'label' => 'Lieu'))
              ->add('save', SubmitType::class, array(
-               'label' => 'Ajouter la formation'))
+               'label' => 'Éditer la formation'))
              ->getForm();
 
          $form_course->handleRequest($request);
@@ -97,9 +97,12 @@ class CourseController extends Controller
      */
      public function deleteAction(Request $request, $id)
      {
-         $course= new Course();
          $em = $this->getDoctrine()->getManager();
-         $em->delete($course);
+         $Course = $product = $this->getDoctrine()
+             ->getRepository('AppBundle:Course')
+             ->find($id);
+         $em->remove($Course);
          $em->flush();
+         return $this->redirectToRoute('user_course');
      }
 }

@@ -110,11 +110,12 @@ class ExperienceController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
-        $Experience = new Experience();
         $em = $this->getDoctrine()->getManager();
-        $em->delete($Experience);
+        $Experience = $product = $this->getDoctrine()
+            ->getRepository('AppBundle:Experience')
+            ->find($id);
+        $em->remove($Experience);
         $em->flush();
-
-        return $this->redirectToRoute('user_xp');
+        return $this->redirectToRoute('user_experience');
     }
 }
