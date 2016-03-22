@@ -17,7 +17,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/project/add", name="user/project/add")
+     * @Route("/project/add", name="user_project_add")
      */
     public function addAction(Request $request)
     {
@@ -41,7 +41,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/project/edit", name="user/project/edit")
+     * @Route("/project/edit", name="user_project_edit")
      */
     public function editAction(Request $request)
     {
@@ -64,7 +64,7 @@ class ProjectController extends Controller
     }
 
     /**
-     * @Route("/project/delete", name="user/project/delete")
+     * @Route("/project/delete", name="user_project_delete")
      */
     public function deleteAction(Request $request)
     {
