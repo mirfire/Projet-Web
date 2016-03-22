@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-
-
+  {{ form_start(form_category) }}
+  {{ form_widget(form_category) }}
+  {{ form_end(form_category) }}
 {% endblock %}

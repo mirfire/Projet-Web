@@ -38,7 +38,7 @@ class CourseController extends Controller
 
             return $this->render('default/index.html.twig');
         }
-        return $this->render('userspace/course-add.html.twig', array('form' => $form->createView()));
+        return $this->render('userspace/course/add.html.twig', array('form' => $form->createView()));
     }
 
     /**
@@ -61,7 +61,7 @@ class CourseController extends Controller
             return $this->redirect($this->generateUrl('Course'));
         }
 
-        return $this->render('edit.html.twig', array('form' => $form->createView()));
+        return $this->render('userspace/skill/edit.html.twig', array('form' => $form->createView()));
     }
 
     /**

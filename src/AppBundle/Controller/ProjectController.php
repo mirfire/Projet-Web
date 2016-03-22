@@ -60,7 +60,7 @@ class ProjectController extends Controller
             return $this->redirect($this->generateUrl('Project'));
         }
 
-        return $this->render('edit.html.twig', array('form' => $form->createView()));
+        return $this->render('userspace/project/edit.html.twig', array('form' => $form->createView()));
     }
 
     /**

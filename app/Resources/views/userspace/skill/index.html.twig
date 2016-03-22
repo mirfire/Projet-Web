@@ -3,7 +3,6 @@
 {% block body %}
   <section class="container">
     <h2 class="text-center">Compétences</h2>
-
     {% if user.skill.count == 0 %}
       <div class="alert alert-danger" role="alert">
         <strong>Mince !</strong> Aucune compétence n'a pu être trouvée.
@@ -22,6 +21,31 @@
           <td>skill.name</td>
           <td>skill.level</td>
         </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+    <hr>
+    <h2 class="text-center">Groupes de Compétences</h2>
+    <form action="{{ path('user_skill_add') }}"></form>
+    {% if user.skillcategory.count == 0 %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Mince !</strong> Aucun groupe de compétences n'a pu être trouvé.
+      </div>
+    {% else %}
+      <table>
+        <thead>
+        <tr>
+          <th>Nom</th>
+          <th>Niveau</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for skill in user.skillcategory %}
+          <tr>
+            <td>skill.name</td>
+            <td>skill.level</td>
+          </tr>
         {% endfor %}
         </tbody>
       </table>
