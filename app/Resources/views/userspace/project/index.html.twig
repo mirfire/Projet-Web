@@ -3,13 +3,13 @@
 {% block body %}
   <section class="container">
     <h2 class="text-center">Projets</h2>
-    <a href="{{ path('user_project_add') }}">Ajouter une Expérience</a>
+    <a href="{{ path('user_project_add') }}">Ajouter un Projet</a>
     {% if user.project.count == 0 %}
       <div class="alert alert-danger" role="alert">
         <strong>Mince !</strong> Aucun projet n'a pu être trouvé.
       </div>
     {% else %}
-      <table>
+      <table class="table">
         <thead>
         <tr>
           <th>Nom de Projet</th>
@@ -17,6 +17,7 @@
           <th>Illustration du projet</th>
           <th>Lien vers le projet</th>
           <th>Sources de téléchargement du projet</th>
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -27,6 +28,7 @@
           <td>{{ project.media }}</td>
           <td>{{ project.link }}</td>
           <td>{{ project.sources }}</td>
+          <td><a href="{{ path('user_project_delete', {'id':project.id}) }}"><i class="fa fa-3x fa-times"></i></a> <a href="{{ path('user_project_edit', {'id':project.id}) }}"><i class="fa fa-3x fa-edit"></i></a></td>
         </tr>
         {% endfor %}
         </tbody>

@@ -9,7 +9,7 @@
         <strong>Mince !</strong> Aucune Formation n'a pu être trouvée.
       </div>
     {% else %}
-      <table>
+      <table class="table">
         <thead>
         <tr>
           <th>Titre de la formation</th>
@@ -17,6 +17,7 @@
           <th>Annee de la formation</th>
           <th>Diplome</th>
           <th>Lieu de la formation</th>
+          <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -25,8 +26,9 @@
           <td>{{ course.name }}</td>
           <td>{{ course.description }}</td>
           <td>{{ course.date }}</td>
-          <td>{{ course.certificate }}</td>
+          <td>{{ course.diploma }}</td>
           <td>{{ course.location }}</td>
+          <td><a href="{{ path('user_course_delete', {'id':course.id}) }}"><i class="fa fa-3x fa-times"></i></a> <a href="{{ path('user_course_edit', {'id':course.id}) }}"><i class="fa fa-3x fa-edit"></i></a></td>
         </tr>
         {% endfor %}
         </tbody>

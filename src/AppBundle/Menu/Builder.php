@@ -27,7 +27,7 @@ class Builder implements ContainerAwareInterface
                 ->setAttribute('icon', 'fa fa-user');
             $menu['Mon Compte']->addChild('Mes Compétences', array('route' => 'user_skill'))
                 ->setAttribute('icon', 'fa fa-star');
-            $menu['Mon Compte']->addChild('Mes Expérience', array('route' => 'user_xp'))
+            $menu['Mon Compte']->addChild('Mes Expérience', array('route' => 'user_experience'))
                 ->setAttribute('icon', 'fa fa-briefcase');
             $menu['Mon Compte']->addChild('Mes Formations', array('route' => 'user_course'))
                 ->setAttribute('icon', 'fa fa-graduation-cap');

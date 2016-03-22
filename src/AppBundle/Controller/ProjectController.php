@@ -23,46 +23,87 @@ class ProjectController extends Controller
      */
     public function addAction(Request $request)
     {
-        $project = new Project();
+        $Project = new Project();
+        $Project->setUser($this->getUser());
+        $form = $this->createFormBuilder($Project)
+            ->add('name', TextType::class, array(
+                'label' => 'Nom',
+            ))
+            ->add('description', TextType::class, array(
+                'label' => 'Description',
+            ))
+            ->add('media', TextType::class, array(
+                'label' => 'Image',
+            ))
+            ->add('link', TextType::class, array(
+                'label' => 'Lien',
+            ))
+            ->add('sources', TextType::class, array(
+                'label' => 'Source',
+            ))
+            ->add('save', SubmitType::class, array(
+                'label' => 'Ajouter un Projet',
+            ))
+            ->getForm();
 
-        $em = $this->getDoctrine()->getManager();
-        $project->setProfil($this->getUser()->getProfil());
-        $form = $this->createForm(new ProjectType(), $project);
         $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em->persist($project);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $Project = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Project);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->add('notice', 'Projet cree.');
-
-            return $this->redirect($this->generateUrl('Project'));
+            return $this->redirectToRoute('user_project');
         }
 
-        return $this->render('add.html.twig', array('form' => $form->createView()));
+        return $this->render('userspace/project/add.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     /**
-     * @Route("/project/edit", name="user_project_edit")
+     * @Route("/project/edit/{id}", name="user_project_edit")
      */
-    public function editAction(Request $request)
+    public function editAction(Request $request, $id)
     {
-        $project = new Project();
+        $Project = $this->getDoctrine()
+            ->getRepository('AppBundle:Project')
+            ->find($id);
+        $Project->setUser($this->getUser());
+        $form = $this->createFormBuilder($Project)
+            ->add('name', TextType::class, array(
+                'label' => 'Nom',
+            ))
+            ->add('description', TextType::class, array(
+                'label' => 'Description',
+            ))
+            ->add('media', TextType::class, array(
+                'label' => 'Image',
+            ))
+            ->add('link', TextType::class, array(
+                'label' => 'Lien',
+            ))
+            ->add('sources', TextType::class, array(
+                'label' => 'Source',
+            ))
+            ->add('save', SubmitType::class, array(
+                'label' => 'Éditer un Projet',
+            ))
+            ->getForm();
 
-        $em = $this->getDoctrine()->getManager();
-        $form = $this->editForm($project);
         $form->handleRequest($request);
-
-        if ($form->isValid()) {
-            $em->persist($project);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $Project = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($Project);
             $em->flush();
 
-            $request->getSession()->getFlashBag()->edit('notice', 'Projet enregistree.');
-
-            return $this->redirect($this->generateUrl('Project'));
+            return $this->redirectToRoute('user_project');
         }
 
-        return $this->render('userspace/project/edit.html.twig', array('form' => $form->createView()));
+        return $this->render('userspace/project/add.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
 
     /**
@@ -72,7 +113,7 @@ class ProjectController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $Project = $this->getDoctrine()
-            ->getRepository('AppBundle:Experience')
+            ->getRepository('AppBundle:Project')
             ->find($id);
         $em->remove($Project);
         $em->flush();

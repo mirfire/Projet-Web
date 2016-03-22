@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 class ExperienceController extends Controller
 {
     /**
-     * @Route("/experience/", name="user_xp")
+     * @Route("/experience/", name="user_experience")
      */
     public function indexAction()
     {
@@ -53,7 +53,7 @@ class ExperienceController extends Controller
             $em->persist($Experience);
             $em->flush();
 
-            return $this->redirectToRoute('user_xp');
+            return $this->redirectToRoute('user_experience');
         }
 
         return $this->render('userspace/experience/add.html.twig', array(
@@ -97,7 +97,7 @@ class ExperienceController extends Controller
             $em->persist($Experience);
             $em->flush();
 
-            return $this->redirectToRoute('user_xp');
+            return $this->redirectToRoute('user_experience');
         }
 
         return $this->render('userspace/experience/add.html.twig', array(
