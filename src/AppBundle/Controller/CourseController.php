@@ -99,7 +99,7 @@ class CourseController extends Controller
      {
          $course= new Course();
          $em = $this->getDoctrine()->getManager();
-         $em->delete($course);
+         $em->remove($course);
          $em->flush();
      }
 }
