@@ -20,59 +20,70 @@ class XpController extends Controller
     /**
      * @Route("/xp/add", name="user_xp_add")
      */
-    public function addAction(Request $request)
-    {
-        $xp = new Xp();
+     public function addAction(Request $request)
+     {
+         $Xp = new Xp();
+         $Xp->setUser($this->getUser());
+         $form_xp = $this->createFormBuilder($Xp)
+             ->add('name', TextType::class)
+             ->add('position', TextType::class)
+             ->add('company', TextType::class)
+             ->add('description', TextType::class)
+             ->add('location', TextType::class)
+             ->getForm();
 
-        $em = $this->getDoctrine()->getManager();
-        $xp->setProfil($this->getUser()->getProfil());
-        $form = $this->createForm(new XpType(), $xp);
-        $form->handleRequest($request);
+         $form_xp->handleRequest($request);
+         if ($form_xp->isSubmitted() && $form_xp->isValid()) {
+             $Xp = $form_xp->getData();
+             $em = $this->getDoctrine()->getManager();
+             $em->persist($Xp);
+             $em->flush();
 
-        if ($form->isValid()) {
-            $em->persist($xp);
-            $em->flush();
+             return $this->redirectToRoute('user_xp');
+         }
 
-            $request->getSession()->getFlashBag()->add('notice', 'Experience cree.');
-
-            return $this->redirect($this->generateUrl('Xp'));
-        }
-
-        return $this->render('add.html.twig', array('form' => $form->createView()));
-    }
-
+         return $this->render('userspace/xp/add.html.twig', array(
+             'form' => $form_xp->createView(),
+         ));
+     }
     /**
      * @Route("/xp/edit/{id}", name="user_xp_edit")
      */
-    public function editAction(Request $request, $id)
+    public function editAction(Request $request)
     {
-        $xp = new Xp();
+      $Xp = $product = $this->getDoctrine()
+          ->getRepository('AppBundle:Xp')
+          ->find($id);
+      $form_xp = $this->createFormBuilder($Xp)
+            ->add('name', TextType::class)
+            ->add('position', TextType::class)
+            ->add('company', TextType::class)
+            ->add('description', TextType::class)
+            ->add('location', TextType::class)
+            ->getForm();
 
-        $em = $this->getDoctrine()->getManager();
-        $form = $this->editForm($xp);
-        $form->handleRequest($request);
+            $form_xp->handleRequest($request);
+            if ($form_xp->isSubmitted() && $form_xp->isValid()) {
+                $Xp = $form_xp->getData();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($Xp);
+                $em->flush();
 
-        if ($form->isValid()) {
-            $em->persist($xp);
-            $em->flush();
-
-            $request->getSession()->getFlashBag()->edit('notice', 'Experience enregistree.');
-
-            return $this->redirect($this->generateUrl('Xp'));
+            return $this->redirectToRoute('user_xp');
         }
 
-        return $this->render('edit.html.twig', array('form' => $form->createView()));
+        return $this->render('userspace/xp/add.html.twig', array(
+            'form' => $form_xp->createView(),
+        ));
     }
-
     /**
      * @Route("/xp/delete/{id}", name="user_xp_delete")
      */
-     public function removeAction(Request $request, $id)
+     public function deleteAction(Request $request, $id)
      {
-         $project = new Project();
+         $xp = new Xp();
          $em = $this->getDoctrine()->getManager();
-         $form = $this->removeForm($project);
-         $em->delete($project);
+         $em->delete($xp);
          $em->flush();
      }
 }
