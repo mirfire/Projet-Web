@@ -10,16 +10,16 @@ class SkillController extends Controller
 {
     public function AddSkillAction(Request $request)
         {
-            $competences = new competence();
+            $skill = new skill();
 
             $em = $this->getDoctrine()->getManager();
-            $competences->setProfil($this->getUser()->getProfil());
-            $form = $this->createForm(new CompetenceType(), $competences);
+            $skill->setProfil($this->getUser()->getProfil());
+            $form = $this->createForm(new skillType(), $skill);
             $form->handleRequest($request);
 
             if ($form->isValid())
             {
-                $em->persist($competences);
+                $em->persist($skill);
                 $em->flush();
 
                 $request->getSession()->getFlashBag()->add('notice', 'Competence cree.');
@@ -32,15 +32,15 @@ class SkillController extends Controller
 
     public function EditSkillAction(Request $request)
           {
-                $competences = new competence();
+                $skill = new skill();
 
                 $em = $this->getDoctrine()->getManager();
-                $form = $this->editForm($competences);
+                $form = $this->editForm($skill);
                 $form->handleRequest($request);
 
                 if ($form->isValid())
                 {
-                    $em->persist($competences);
+                    $em->persist($skill);
                     $em->flush();
 
                     $request->getSession()->getFlashBag()->edit('notice', 'Competence enregistree.');
@@ -53,15 +53,15 @@ class SkillController extends Controller
 
     public function RemoveSkillAction(Request $request)
                 {
-                    $competences = new competence();
+                    $skill = new skill();
 
                     $em = $this->getDoctrine()->getManager();
-                    $form = $this->removeForm($competences);
+                    $form = $this->removeForm($skill);
                     $form->handleRequest($request);
 
                     if ($form->isValid())
                     {
-                        $em->remove($competences);
+                        $em->remove($skill);
                         $em->flush();
 
                         $request->getSession()->getFlashBag()->remove('notice', 'Competence Supprimee.');
