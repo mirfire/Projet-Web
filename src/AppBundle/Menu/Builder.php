@@ -25,6 +25,8 @@ class Builder implements ContainerAwareInterface
                 ->setAttribute('icon', 'fa fa-user');
             $menu['Mon Compte']->addChild('Profil', array('route' => 'fos_user_profile_show'))
                 ->setAttribute('icon', 'fa fa-user');
+            $menu['Mon Compte']->addChild('Éditer Profil', array('route' => 'fos_user_profile_edit'))
+                ->setAttribute('icon', 'fa fa-pencil-square-o');
             $menu['Mon Compte']->addChild('Mes Compétences', array('route' => 'user_skill'))
                 ->setAttribute('icon', 'fa fa-star');
             $menu['Mon Compte']->addChild('Mes Expérience', array('route' => 'user_experience'))
