@@ -4,7 +4,7 @@
   <section class="container">
     <h2 class="text-center">Expériences</h2>
 
-    {% if user.xp.count == 0 %}
+    {% if user.experience.count == 0 %}
       <div class="alert alert-danger" role="alert">
         <strong>Mince !</strong> Aucune expérience n'a pu être trouvée.
       </div>
@@ -20,7 +20,7 @@
         </tr>
         </thead>
         <tbody>
-        {% for xp in user.xp %}
+        {% for xp in user.experience %}
         <tr>
           <td>xp.name</td>
           <td>xp.position</td>

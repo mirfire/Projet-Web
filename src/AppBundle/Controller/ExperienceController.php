@@ -7,18 +7,18 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
 
-class XpController extends Controller
+class ExperienceController extends Controller
 {
     /**
-     * @Route("/xp/", name="user_xp")
+     * @Route("/experience/", name="user_xp")
      */
     public function indexAction()
     {
-        return $this->render('userspace/xp/index.html.twig', array('user' => $this->getUser()));
+        return $this->render('userspace/experience/index.html.twig', array('user' => $this->getUser()));
     }
 
     /**
-     * @Route("/xp/add", name="user_xp_add")
+     * @Route("/experience/add", name="user_experience_add")
      */
      public function addAction(Request $request)
      {
@@ -42,12 +42,12 @@ class XpController extends Controller
              return $this->redirectToRoute('user_xp');
          }
 
-         return $this->render('userspace/xp/add.html.twig', array(
+         return $this->render('userspace/experience/add.html.twig', array(
              'form' => $form_xp->createView(),
          ));
      }
     /**
-     * @Route("/xp/edit/{id}", name="user_xp_edit")
+     * @Route("/experience/edit/{id}", name="user_experience_edit")
      */
     public function editAction(Request $request)
     {
@@ -72,12 +72,12 @@ class XpController extends Controller
             return $this->redirectToRoute('user_xp');
         }
 
-        return $this->render('userspace/xp/add.html.twig', array(
+        return $this->render('userspace/experience/add.html.twig', array(
             'form' => $form_xp->createView(),
         ));
     }
     /**
-     * @Route("/xp/delete/{id}", name="user_xp_delete")
+     * @Route("/experience/delete/{id}", name="user_experience_delete")
      */
      public function deleteAction(Request $request, $id)
      {
