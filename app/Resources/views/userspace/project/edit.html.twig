@@ -1,32 +1,57 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
-    <h1 class="text-center">Modifier un projet</h1>
-    <form action="" method="post">
-        <div>
-            <label>Nom du projet</label>
-            <input type="Text" id="nameproject"/>
+<h1 class="text-center">Ajout d'une formation</h1>
+{{form_start(form,{'attr':{'class':'form-horizontale'}})}}
+{{form_errors(form)}}
+  <div>
+    <div class="form-group">
+        {% set label %}Nom du projet{% endset %}
+        {{ form_label(form.name, label, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.name) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <div>
-            <label>Description</label>
-            <input type="Text" id="description"/>
+    </div>
+    <div class="form-group">
+        {% set label %}Description du projet{% endset %}
+        {{ form_label(form.description, label, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.description) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <div>
-            <label>Illustration (Photos)</label>
-            <input type="Image" id="Illustration"/>
+    </div>
+    <div class="form-group">
+        {% set label %}Illustration{% endset %}
+        {{ form_label(form.media, label, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.media) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.media, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <div>
-            <label>Liens vers la réalisation</label>
-            <input type="url" id="hyperlien"/>
+    </div>
+    <div class="form-group">
+        {% set label %}Lien de la réalisation{% endset %}
+        {{ form_label(form.link, label, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.link) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.link, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <div>
-            <label>Téléchargement du projet(si disponible)</label>
-            <input type="file" id="download"/>
+    </div>
+    <div class="form-group">
+        {% set label %}Source de votre projet(lien téléchargement){% endset %}
+        {{ form_label(form.sources, label, {'label_attr': {'class': 'col-sm-2 control-label'}}) }}
+        {{ form_errors(form.sources) }}
+        <div class="col-sm-4">
+            {{ form_widget(form.sources, {'attr': {'class': 'form-control'}}) }}
         </div>
-        <div class="button">
-            <button type="submit">Lancer la modification</button>
-        </div>
-    </form>
-</div>
+    </div>
+
+
+           <div class="button">
+               <button type="submit">Ajout d'une formation</button>
+           </div>
+
+       {{ form_rest(form) }}
+    {{ form_end(form) }}
+   </div>
 {% endblock %}
