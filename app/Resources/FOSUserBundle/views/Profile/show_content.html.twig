@@ -1,113 +1,98 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-</div>
-
-
-<div class="row">
-    <div class="col-md-9 col-md-push-3">
-        <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Accueil
-                </a>
-            </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <div class="panel-body">
-                <div class="butonThème">
-                    <p><a class="btn btn-default" href="{{ path('search') }}" role="button">accueil n°1</a></p>
-                </div>
-                <div class="butonThème">
-                    <p><a class="btn btn-default" href="{{ path('search') }}" role="button">accueil n°2</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-9 col-md-push-3">
-        <div class="panel-heading" role="tab" id="headingTwo">
-            <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Thème
-                </a>
-            </h4>
-        </div>
-        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-            <div class="panel-body">
-                <div class="butonThème">
-                    <p><a class="btn btn-default" href="{{ path('search') }}" role="button">Thème n°1</a></p>
-                </div>
-                <div class="butonThème">
-                    <p><a class="btn btn-default" href="{{ path('search') }}" role="button">Thème n°2</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-9 col-md-push-3">
-        <div class="panel-heading" role="tab" id="headingThree">
-            <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    CV
-                </a>
-            </h4>
-        </div>
-        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-            <div class="panel-body">
-                <div class="butonThème">
-                    <p><a class="btn btn-default" href="{{ path('search') }}" role="button">CV n°1</a></p>
-                </div>
-                <div class="butonThème">
-                    <p><a class="btn btn-default" href="{{ path('search') }}" role="button">CV n°2</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-9 col-md-push-3">
-        <div class="panel-heading" role="tab" id="headingFour">
-            <h4 class="panel-title">
-                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                    PorteFolio
-                </a>
-            </h4>
-        </div>
-        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
-            <div class="panel-body">
-                <div class="butonThème">
-                    <p><a class="btn btn-default" href="{{ path('search') }}" role="button">Ajouter une slide</a></p>
-                </div>
-                <div class="butonThème">
-                    <p><a class="btn btn-default" href="{{ path('search') }}" role="button">Enlever une slide</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-
-    <div class="col-md-3 col-md-pull-9">
-        <p>{{ 'Prénom'|trans }}: {{ user.name }}</p>
-        <p>{{ 'Nom'|trans }}: {{ user.surname }}</p>
-        <p>{{ 'Email'|trans }}: {{ user.email }}</p>
-        <p>{{ 'télèphone'|trans }}: {{ user.phone }}</p>
-        <p>{{ 'Adresse'|trans }}: {{ user.address }}</p>
-        <p>{{ 'Code postal'|trans }}: {{ user.zipcode }}</p>
-        <p>{{ 'Ville'|trans }}: {{ user.city }}</p>
-    </div>
-</div>
-
-
 <div class="row">
     <div class="col-sm-9">
-        Page de profile
+        <h1>Page de profile</h1>
         <div class="row">
             <div class="col-xs-8 col-sm-6">
-                Level 2: .col-xs-8 .col-sm-6
+                <p>{{ 'Prénom'|trans }}: {{ user.name }}</p>
+                <p>{{ 'Nom'|trans }}: {{ user.surname }}</p>
+                <p>{{ 'Email'|trans }}: {{ user.email }}</p>
+                <p>{{ 'télèphone'|trans }}: {{ user.phone }}</p>
+                <p>{{ 'Adresse'|trans }}: {{ user.address }}</p>
+                <p>{{ 'Code postal'|trans }}: {{ user.zipcode }}</p>
+                <p>{{ 'Ville'|trans }}: {{ user.city }}</p>
             </div>
+
+
+
             <div class="col-xs-4 col-sm-6">
-                Level 2: .col-xs-4 .col-sm-6
+                <div class="col-md-9 col-md-push-3">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                Accueil
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="butonThème">
+                                <p><a class="btn btn-default" href="{{ path('search') }}" role="button">accueil n°1</a></p>
+                            </div>
+                            <div class="butonThème">
+                                <p><a class="btn btn-default" href="{{ path('search') }}" role="button">accueil n°2</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-md-push-3">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Thème
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="butonThème">
+                                <p><a class="btn btn-default" href="{{ path('search') }}" role="button">Thème n°1</a></p>
+                            </div>
+                            <div class="butonThème">
+                                <p><a class="btn btn-default" href="{{ path('search') }}" role="button">Thème n°2</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-md-push-3">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                CV
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+                            <div class="butonThème">
+                                <p><a class="btn btn-default" href="{{ path('search') }}" role="button">CV n°1</a></p>
+                            </div>
+                            <div class="butonThème">
+                                <p><a class="btn btn-default" href="{{ path('search') }}" role="button">CV n°2</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9 col-md-push-3">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                PorteFolio
+                            </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="panel-body">
+                            <div class="butonThème">
+                                <p><a class="btn btn-default" href="{{ path('search') }}" role="button">Ajouter une slide</a></p>
+                            </div>
+                            <div class="butonThème">
+                                <p><a class="btn btn-default" href="{{ path('search') }}" role="button">Enlever une slide</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
