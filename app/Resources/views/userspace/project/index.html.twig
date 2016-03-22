@@ -3,7 +3,7 @@
 {% block body %}
   <section class="container">
     <h2 class="text-center">Projets</h2>
-
+    <a href="{{ path('user_project_add') }}">Ajouter une Expérience</a>
     {% if user.project.count == 0 %}
       <div class="alert alert-danger" role="alert">
         <strong>Mince !</strong> Aucun projet n'a pu être trouvé.

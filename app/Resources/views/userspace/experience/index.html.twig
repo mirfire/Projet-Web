@@ -3,7 +3,7 @@
 {% block body %}
   <section class="container">
     <h2 class="text-center">Expériences</h2>
-
+    <a href="{{ path('user_experience_add') }}">Ajouter une Expérience</a>
     {% if user.experience.count == 0 %}
       <div class="alert alert-danger" role="alert">
         <strong>Mince !</strong> Aucune expérience n'a pu être trouvée.

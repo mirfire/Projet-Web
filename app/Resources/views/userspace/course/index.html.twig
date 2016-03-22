@@ -3,7 +3,7 @@
 {% block body %}
   <section class="container">
     <h2 class="text-center">Formation</h2>
-
+    <a href="{{ path('user_course_add') }}">Ajouter une Formation</a>
     {% if user.course.count == 0 %}
       <div class="alert alert-danger" role="alert">
         <strong>Mince !</strong> Aucune Formation n'a pu être trouvée.
