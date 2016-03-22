@@ -17,9 +17,9 @@ use Symfony\Component\HttpFoundation\Response;
 class CvController extends Controller
 {
     /**
-     * @Route("/cv", name="cv")
+     * @Route("/cv/{username}", name="cv_index")
      */
-    public function cvAction(Request $request)
+    public function indexAction(Request $request, $usernamae)
     {
         // replace this example code with whatever you need
         return $this->render('cv.html.twig', array(

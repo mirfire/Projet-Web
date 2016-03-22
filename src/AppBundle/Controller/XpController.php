@@ -4,79 +4,85 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-/**
-*@Route("/xp", name="user/xp")
-*/
+
+
 class XpController extends Controller
 {
     /**
-    *@Route("/xp/add", name="user/xp/add")
-    */
-    public function AddXpAction(Request $request)
-        {
-            $xp = new Xp();
+     * @Route("/xp", name="user_xp")
+     */
+    public function indexAction()
+    {
+        
+    }
 
-            $em = $this->getDoctrine()->getManager();
-            $xp->setProfil($this->getUser()->getProfil());
-            $form = $this->createForm(new XpType(), $xp);
-            $form->handleRequest($request);
+    /**
+     * @Route("/xp/add", name="user_xp_add")
+     */
+    public function addAction(Request $request)
+    {
+        $xp = new Xp();
 
-            if ($form->isValid())
-            {
-                $em->persist($xp);
-                $em->flush();
+        $em = $this->getDoctrine()->getManager();
+        $xp->setProfil($this->getUser()->getProfil());
+        $form = $this->createForm(new XpType(), $xp);
+        $form->handleRequest($request);
 
-                $request->getSession()->getFlashBag()->add('notice', 'Experience cree.');
+        if ($form->isValid()) {
+            $em->persist($xp);
+            $em->flush();
 
-                return $this->redirect($this->generateUrl('Xp'));
-            }
+            $request->getSession()->getFlashBag()->add('notice', 'Experience cree.');
 
-            return $this->render('xp-add.html.twig', array('form' => $form->createView()) );
+            return $this->redirect($this->generateUrl('Xp'));
         }
-        /**
-        *@Route("/xp/edit", name="user/xp/edit")
-        */
-    public function EditXpAction(Request $request)
-          {
-                $xp = new Xp();
 
-                $em = $this->getDoctrine()->getManager();
-                $form = $this->editForm($xp);
-                $form->handleRequest($request);
+        return $this->render('xp-add.html.twig', array('form' => $form->createView()));
+    }
 
-                if ($form->isValid())
-                {
-                    $em->persist($xp);
-                    $em->flush();
+    /**
+     * @Route("/xp/edit/{id}", name="user_xp_edit")
+     */
+    public function editAction(Request $request, $id)
+    {
+        $xp = new Xp();
 
-                    $request->getSession()->getFlashBag()->edit('notice', 'Experience enregistree.');
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->editForm($xp);
+        $form->handleRequest($request);
 
-                    return $this->redirect($this->generateUrl('Xp'));
-                }
+        if ($form->isValid()) {
+            $em->persist($xp);
+            $em->flush();
 
-                return $this->render('xp-edit.html.twig', array('form' => $form->createView()) );
-          }
-          /**
-          *@Route("/xp/delete", name="user/xp/delete")
-          */
-    public function DeleteXpAction(Request $request)
-                {
-                    $xp = new Xp();
+            $request->getSession()->getFlashBag()->edit('notice', 'Experience enregistree.');
 
-                    $em = $this->getDoctrine()->getManager();
-                    $form = $this->deleteForm($xp);
-                    $form->handleRequest($request);
+            return $this->redirect($this->generateUrl('Xp'));
+        }
 
-                    if ($form->isValid())
-                    {
-                        $em->delete($xp);
-                        $em->flush();
+        return $this->render('xp-edit.html.twig', array('form' => $form->createView()));
+    }
 
-                        $request->getSession()->getFlashBag()->delete('notice', 'Experience Supprimee.');
+    /**
+     * @Route("/xp/delete/{id}", name="user_xp_delete")
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $xp = new Xp();
 
-                        return $this->redirect($this->generateUrl('Xp'));
-                    }
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->deleteForm($xp);
+        $form->handleRequest($request);
 
-                    return $this->render('xp-delete.html.twig', array('form' => $form->createView()) );
-                }
+        if ($form->isValid()) {
+            $em->delete($xp);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->delete('notice', 'Experience Supprimee.');
+
+            return $this->redirect($this->generateUrl('Xp'));
+        }
+
+        return $this->render('xp-delete.html.twig', array('form' => $form->createView()));
+    }
 }

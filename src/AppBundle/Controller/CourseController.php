@@ -5,79 +5,79 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+
 /**
-*@Route("/course", name="user/course")
-*/
+ * @Route("/course", name="user/course")
+ */
 class CourseController extends Controller
 {
-  /**
-  *@Route("/course/add", name="user/course/add")
-  */
-    public function AddCourseAction(Request $request)
-        {
-            $course = new Course();
+    /**
+     * @Route("/course/add", name="user_course_add")
+     */
+    public function addAction(Request $request)
+    {
+        $course = new Course();
 
-            $em = $this->getDoctrine()->getManager();
-            $course->setProfil($this->getUser()->getProfil());
-            $form = $this->createForm(new CourseType(), $course);
-            $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $course->setProfil($this->getUser()->getProfil());
+        $form = $this->createForm(new CourseType(), $course);
+        $form->handleRequest($request);
 
-            if ($form->isValid())
-            {
-                $em->persist($course);
-                $em->flush();
+        if ($form->isValid()) {
+            $em->persist($course);
+            $em->flush();
 
-                $request->getSession()->getFlashBag()->add('notice', 'Formation cree.');
+            $request->getSession()->getFlashBag()->add('notice', 'Formation cree.');
 
-                return $this->redirect($this->generateUrl('Course'));
-            }
-
-            return $this->render('course-add.html.twig', array('form' => $form->createView()) );
+            return $this->redirect($this->generateUrl('Course'));
         }
-        /**
-        *@Route("/course/edit", name="user/course/edit")
-        */
-    public function EditCourseAction(Request $request)
-          {
-                $course = new Course();
 
-                $em = $this->getDoctrine()->getManager();
-                $form = $this->editForm($course);
-                $form->handleRequest($request);
+        return $this->render('course-add.html.twig', array('form' => $form->createView()));
+    }
 
-                if ($form->isValid())
-                {
-                    $em->persist($course);
-                    $em->flush();
+    /**
+     * @Route("/course/edit/{id}", name="user_course_edit")
+     */
+    public function editAction(Request $request, $id)
+    {
+        $course = new Course();
 
-                    $request->getSession()->getFlashBag()->edit('notice', 'Formation enregistree.');
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->editForm($course);
+        $form->handleRequest($request);
 
-                    return $this->redirect($this->generateUrl('Course'));
-                }
+        if ($form->isValid()) {
+            $em->persist($course);
+            $em->flush();
 
-                return $this->render('course-edit.html.twig', array('form' => $form->createView()) );
-          }
-          /**
-          *@Route("/course/delete", name="user/course/delete")
-          */
-    public function DeleteCourseAction(Request $request)
-                {
-                    $course = new Course();
+            $request->getSession()->getFlashBag()->edit('notice', 'Formation enregistree.');
 
-                    $em = $this->getDoctrine()->getManager();
-                    $form = $this->deleteForm($course);
-                    $form->handleRequest($request);
+            return $this->redirect($this->generateUrl('Course'));
+        }
 
-                    if ($form->isValid())
-                    {
-                        $em->delete($course);
-                        $em->flush();
+        return $this->render('course-edit.html.twig', array('form' => $form->createView()));
+    }
 
-                        $request->getSession()->getFlashBag()->delete('notice', 'Formation Supprimee.');
+    /**
+     * @Route("/course/delete/{id}", name="user_course_delete")
+     */
+    public function deleteAction(Request $request, $id)
+    {
+        $course = new Course();
 
-                        return $this->redirect($this->generateUrl('Course'));
-                    }
+        $em = $this->getDoctrine()->getManager();
+        $form = $this->deleteForm($course);
+        $form->handleRequest($request);
 
-                    return $this->render('course-delete.html.twig', array('form' => $form->createView()) );
-                }
+        if ($form->isValid()) {
+            $em->delete($course);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()->delete('notice', 'Formation Supprimee.');
+
+            return $this->redirect($this->generateUrl('Course'));
+        }
+
+        return $this->render('course-delete.html.twig', array('form' => $form->createView()));
+    }
 }

@@ -12,7 +12,8 @@ class SkillController extends Controller
     /**
      * @Route("/skill/", name="user_skill")
      */
-    public function indexAction(Request $request) {
+    public function indexAction(Request $request)
+    {
 
     }
 
@@ -20,7 +21,7 @@ class SkillController extends Controller
     /**
      * @Route("/skill/add", name="user_skill_add")
      */
-    public function AddSkillAction(Request $request)
+    public function addAction(Request $request)
     {
         $skill = new Skill();
 
@@ -42,9 +43,9 @@ class SkillController extends Controller
     }
 
     /**
-     * @Route("/skill/edit/", name="user_skill_edit")
+     * @Route("/skill/edit/{id}", name="user_skill_edit")
      */
-    public function EditSkillAction(Request $request)
+    public function editAction(Request $request, $id)
     {
         $skill = new Skill();
 
@@ -65,9 +66,9 @@ class SkillController extends Controller
     }
 
     /**
-     * @Route("/skill/delete/", name="user_skill_delete")
+     * @Route("/skill/delete/{id}", name="user_skill_delete")
      */
-    public function DeleteSkillAction(Request $request)
+    public function deleteAction(Request $request, $id)
     {
         $skill = new Skill();
 
