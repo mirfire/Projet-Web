@@ -2,7 +2,6 @@
 namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping AS ORM;
 use FOS\UserBundle\Model\User as BaseUser;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -19,29 +18,11 @@ class User extends BaseUser
 
     /**
      * @ORM\Column(type="string", nullable=false)
-     *
-     * @Assert\NotBlank(message="Merci d'entrer votre nom.", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=2,
-     *     max=255,
-     *     minMessage="Votre nom est trop court.",
-     *     maxMessage="Votre nom est trop long.",
-     *     groups={"Registration", "Profile"}
-     * )
      */
     protected $name;
 
     /**
      * @ORM\Column(type="string", nullable=false)
-     *
-     * @Assert\NotBlank(message="Merci d'entrer votre prénom.", groups={"Registration", "Profile"})
-     * @Assert\Length(
-     *     min=2,
-     *     max=255,
-     *     minMessage="Votre prénom est trop court.",
-     *     maxMessage="Votre prénom est trop long.",
-     *     groups={"Registration", "Profile"}
-     * )
      */
     protected $surname;
 
@@ -71,11 +52,6 @@ class User extends BaseUser
     protected $theme = 0;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Project", mappedBy="user")
-     */
-    protected $project;
-
-    /**
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Skill", mappedBy="user")
      */
     protected $skill;
@@ -99,6 +75,11 @@ class User extends BaseUser
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\AcquiredSkill", mappedBy="user")
      */
     protected $acquiredSkill;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Project", mappedBy="user")
+     */
+    protected $project;
     /**
      * Constructor
      */
@@ -110,6 +91,40 @@ class User extends BaseUser
         $this->course = new \Doctrine\Common\Collections\ArrayCollection();
         $this->experience = new \Doctrine\Common\Collections\ArrayCollection();
         $this->acquiredSkill = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->project = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set email
+     *
+     * @param string $email
+     * @return User
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get email
+     *
+     * @return string 
+     */
+    public function getEmail()
+    {
+        return $this->email;
     }
 
     /**
@@ -251,26 +266,26 @@ class User extends BaseUser
     }
 
     /**
-     * Set project
+     * Set theme
      *
-     * @param \AppBundle\Entity\Project $project
+     * @param integer $theme
      * @return User
      */
-    public function setProject(\AppBundle\Entity\Project $project = null)
+    public function setTheme($theme)
     {
-        $this->project = $project;
+        $this->theme = $theme;
 
         return $this;
     }
 
     /**
-     * Get project
+     * Get theme
      *
-     * @return \AppBundle\Entity\Project 
+     * @return integer 
      */
-    public function getProject()
+    public function getTheme()
     {
-        return $this->project;
+        return $this->theme;
     }
 
     /**
@@ -439,25 +454,35 @@ class User extends BaseUser
     }
 
     /**
-     * Set theme
+     * Add project
      *
-     * @param integer $theme
+     * @param \AppBundle\Entity\Project $project
      * @return User
      */
-    public function setTheme($theme)
+    public function addProject(\AppBundle\Entity\Project $project)
     {
-        $this->theme = $theme;
+        $this->project[] = $project;
 
         return $this;
     }
 
     /**
-     * Get theme
+     * Remove project
      *
-     * @return integer 
+     * @param \AppBundle\Entity\Project $project
      */
-    public function getTheme()
+    public function removeProject(\AppBundle\Entity\Project $project)
     {
-        return $this->theme;
+        $this->project->removeElement($project);
+    }
+
+    /**
+     * Get project
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProject()
+    {
+        return $this->project;
     }
 }

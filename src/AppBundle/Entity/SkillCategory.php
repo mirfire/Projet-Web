@@ -26,7 +26,7 @@ class SkillCategory
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="skillCategory")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
     /**
@@ -109,7 +109,7 @@ class SkillCategory
      * @param \AppBundle\Entity\User $user
      * @return SkillCategory
      */
-    public function setUser(\AppBundle\Entity\User $user)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
 

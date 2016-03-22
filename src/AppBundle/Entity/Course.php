@@ -41,7 +41,7 @@ class Course
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="course")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
@@ -176,7 +176,7 @@ class Course
      * @param \AppBundle\Entity\User $user
      * @return Course
      */
-    public function setUser(\AppBundle\Entity\User $user)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
 

@@ -8,26 +8,23 @@ use Doctrine\ORM\Mapping AS ORM;
 class AcquiredSkill
 {
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Skill", inversedBy="acquiredSkill")
-     * 
-     * @ORM\JoinColumn(name="skill_id", referencedColumnName="id", nullable=false, unique=true)
      * @ORM\Id
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Skill", inversedBy="acquiredSkill")
+     * @ORM\JoinColumn(name="skill_id", referencedColumnName="id", unique=true)
      */
     protected $skill;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Experience", inversedBy="acquiredSkill")
-     * 
-     * @ORM\JoinColumn(name="experience_id", referencedColumnName="id", nullable=false, unique=true)
      * @ORM\Id
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Experience", inversedBy="acquiredSkill")
+     * @ORM\JoinColumn(name="experience_id", referencedColumnName="id", unique=true)
      */
     protected $experience;
 
     /**
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="acquiredSkill")
-     * 
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      * @ORM\Id
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="acquiredSkill")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
      */
     protected $user;
 

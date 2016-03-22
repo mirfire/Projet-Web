@@ -31,13 +31,13 @@ class Skill
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="skill")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SkillCategory", inversedBy="skill")
-     * @ORM\JoinColumn(name="skill_category_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="skill_category_id", referencedColumnName="id")
      */
     protected $skillCategory;
 
@@ -126,7 +126,7 @@ class Skill
      * @param \AppBundle\Entity\User $user
      * @return Skill
      */
-    public function setUser(\AppBundle\Entity\User $user)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
@@ -149,7 +149,7 @@ class Skill
      * @param \AppBundle\Entity\SkillCategory $skillCategory
      * @return Skill
      */
-    public function setSkillCategory(\AppBundle\Entity\SkillCategory $skillCategory)
+    public function setSkillCategory(\AppBundle\Entity\SkillCategory $skillCategory = null)
     {
         $this->skillCategory = $skillCategory;
 

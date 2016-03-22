@@ -40,8 +40,8 @@ class Project
     protected $sources;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\User", inversedBy="project")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false, unique=true)
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="project")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
@@ -176,7 +176,7 @@ class Project
      * @param \AppBundle\Entity\User $user
      * @return Project
      */
-    public function setUser(\AppBundle\Entity\User $user)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
 

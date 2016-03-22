@@ -46,7 +46,7 @@ class Experience
 
     /**
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="experience")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=false)
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     protected $user;
 
@@ -204,7 +204,7 @@ class Experience
      * @param \AppBundle\Entity\User $user
      * @return Experience
      */
-    public function setUser(\AppBundle\Entity\User $user)
+    public function setUser(\AppBundle\Entity\User $user = null)
     {
         $this->user = $user;
 
