@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <section class="container">
+    <h2 class="text-center">Formation</h2>
+
+    {% if user.xp.count == 0 %}
+      <div class="alert alert-danger" role="alert">
+        <strong>Mince !</strong> Aucune Formation n'a pu être trouvée.
+      </div>
+    {% else %}
+      <table>
+        <thead>
+        <tr>
+          <th>Titre de la formation</th>
+          <th>Description de la formation</th>
+          <th>Annee de la formation</th>
+          <th>Diplome</th>
+          <th>Lieu de la formation</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for xp in user.xp %}
+        <tr>
+          <td>course.name</td>
+          <td>course.description</td>
+          <td>course.date</td>
+          <td>course.certificate</td>
+          <td>course.location</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+  </section>
+{% endblock %}
