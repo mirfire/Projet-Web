@@ -5,6 +5,8 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use AppBundle\Entity\Course;
+use AppBundle\Form\CourseType;
 
 class CourseController extends Controller
 {
@@ -23,20 +25,20 @@ class CourseController extends Controller
         $course = new Course();
 
         $em = $this->getDoctrine()->getManager();
-        $course->setProfil($this->getUser()->getProfil());
+        $course->setUser($this->getUser());
         $form = $this->createForm(new CourseType(), $course);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+
             $em->persist($course);
             $em->flush();
 
             $request->getSession()->getFlashBag()->add('notice', 'Formation cree.');
 
-            return $this->redirect($this->generateUrl('Course'));
+            return $this->render('default/index.html.twig');
         }
-
-        return $this->render('course-add', array('form' => $form->createView()));
+        return $this->render('userspace/course-add.html.twig', array('form' => $form->createView()));
     }
 
     /**

@@ -25,7 +25,7 @@ class Course
     protected $description;
 
     /**
-     * @ORM\Column(type="date", nullable=false)
+     * @ORM\Column(type="string", nullable=false)
      */
     protected $date;
 
@@ -48,7 +48,7 @@ class Course
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -71,7 +71,7 @@ class Course
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -94,7 +94,7 @@ class Course
     /**
      * Get description
      *
-     * @return string 
+     * @return string
      */
     public function getDescription()
     {
@@ -117,7 +117,7 @@ class Course
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDate()
     {
@@ -140,7 +140,7 @@ class Course
     /**
      * Get diploma
      *
-     * @return string 
+     * @return string
      */
     public function getDiploma()
     {
@@ -163,7 +163,7 @@ class Course
     /**
      * Get location
      *
-     * @return string 
+     * @return string
      */
     public function getLocation()
     {
@@ -186,7 +186,7 @@ class Course
     /**
      * Get user
      *
-     * @return \AppBundle\Entity\User 
+     * @return \AppBundle\Entity\User
      */
     public function getUser()
     {
