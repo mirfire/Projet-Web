@@ -32,6 +32,7 @@ class CvController extends Controller
         // replace this example code with whatever you need
         return $this->render('cv.html.twig', array(
             'user' => $User,
+            'logged' => $this->getUser(),
         ));
     }
 
@@ -48,7 +49,8 @@ class CvController extends Controller
             ->add('name', TextType::class, array(
                 'label' => 'Nom',))
             ->add('email', EmailType::class, array(
-                'label' => 'Email'))
+                'label' => 'Email',
+                'value' => $this->getUser()->getEmail(),))
             ->add('subject', TextType::class, array(
                 'label' => 'Sujet',))
             ->add('message', TextareaType::class, array(

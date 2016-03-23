@@ -1,116 +1,126 @@
 {% extends 'base.html.twig' %}
 
 {% block cvtheme %}
-    {% if user.theme == 1 %}
-        <link rel="stylesheet"
-              href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/superhero/bootstrap.min.css">
-    {% endif %}
+  {% if user.theme == 1 %}
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.6/superhero/bootstrap.min.css">
+  {% endif %}
 {% endblock %}
 
 {% block body %}
 <div class="container" id="accordion" role="tablist" aria-multiselectable="true">
-    <h2 class="text-center">
-        {{ user.name }} {{ user.surname }}<br>
-        <small><a href="{{ path('cv_contact', {'id':user.id}) }}">Lui envoyer un message</a></small>
-    </h2>
-    Habite à {{ user.city }}.
-    <hr>
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingOne">
-                <h4 class="panel-title">
-                    <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        Compétences
-                    </a>
-                </h4>
+  <h2 class="text-center">
+    {{ user.name }} {{ user.surname }}<br>
+    {% if logged %}
+      <small><a href="{{ path('cv_contact', {'id':user.id}) }}">Lui envoyer un message</a></small>
+    {% endif %}
+  </h2>
+  Habite à {{ user.city }}.
+  <hr>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true"
+             aria-controls="collapseOne">
+            Compétences
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        {% if user.skill.count == 0 %}
+          <div class="panel-body">
+            <div class="alert alert-danger" role="alert">
+              <strong>Mince !</strong> Aucune compétence n'a pu être trouvée.
             </div>
-            <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
-                {% if user.skill.count == 0 %}
-                    <div class="panel-body">
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Mince !</strong> Aucune compétence n'a pu être trouvée.
-                        </div>
-                    </div>
-                {% else %}
-                    <ul class="list-group panel-body">
-                        {% for skill in user.skill %}
-                            <li class="list-group-item">
-                                <span class="badge">{{ skill.level }}/5</span>
-                                {{ skill.name }}
-                            </li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingTwo">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                        Expériences
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-                {% if user.experience.count == 0 %}
-                    <div class="panel-body">
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Mince !</strong> Aucune compétence n'a pu être trouvée.
-                        </div>
-                    </div>
-                {% else %}
-                    <div class="panel-body">
-                        {% for experience in user.experience %}
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="http://fakeimg.pl/64x64/" alt="64x64">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">{{ experience.name }} <small><strong>{{ experience.position }}</strong> chez <strong>{{ experience.company }}</strong> à <strong>{{ experience.location }}</strong></small></h4>
-                                    {{ experience.description }}
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-        </div>
-        <div class="panel panel-default">
-            <div class="panel-heading" role="tab" id="headingThree">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                        Formations
-                    </a>
-                </h4>
-            </div>
-            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                {% if user.course.count == 0 %}
-                    <div class="panel-body">
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Mince !</strong> Aucune formation n'a pu être trouvée.
-                        </div>
-                    </div>
-                {% else %}
-                    <div class="panel-body">
-                        {% for course in user.course %}
-                            <div class="media">
-                                <div class="media-left">
-                                    <a href="#">
-                                        <img class="media-object" src="http://fakeimg.pl/64x64/" alt="64x64">
-                                    </a>
-                                </div>
-                                <div class="media-body">
-                                    <h4 class="media-heading">{{ course.name }} <small><strong>{{ course.diploma }}</strong> à <strong>{{ course.location }}</strong></small></h4>
-                                    {{ course.description }}<br>
-                                    Le: {{ course.date }}
-                                </div>
-                            </div>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-        </div>
+          </div>
+        {% else %}
+          <ul class="list-group panel-body">
+            {% for skill in user.skill %}
+              <li class="list-group-item">
+                <span class="badge">{{ skill.level }}/5</span>
+                {{ skill.name }}
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
     </div>
-    {% endblock %}
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"
+             aria-expanded="false" aria-controls="collapseTwo">
+            Expériences
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+        {% if user.experience.count == 0 %}
+          <div class="panel-body">
+            <div class="alert alert-danger" role="alert">
+              <strong>Mince !</strong> Aucune expérience n'a pu être trouvée.
+            </div>
+          </div>
+        {% else %}
+          <div class="panel-body">
+            {% for experience in user.experience %}
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://fakeimg.pl/64x64/" alt="64x64">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">{{ experience.name }}
+                    <small><strong>{{ experience.position }}</strong> chez <strong>{{ experience.company }}</strong> à
+                      <strong>{{ experience.location }}</strong></small>
+                  </h4>
+                  {{ experience.description }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingThree">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree"
+             aria-expanded="false" aria-controls="collapseThree">
+            Formations
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        {% if user.course.count == 0 %}
+          <div class="panel-body">
+            <div class="alert alert-danger" role="alert">
+              <strong>Mince !</strong> Aucune formation n'a pu être trouvée.
+            </div>
+          </div>
+        {% else %}
+          <div class="panel-body">
+            {% for course in user.course %}
+              <div class="media">
+                <div class="media-left">
+                  <a href="#">
+                    <img class="media-object" src="http://fakeimg.pl/64x64/" alt="64x64">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">{{ course.name }}
+                    <small><strong>{{ course.diploma }}</strong> à <strong>{{ course.location }}</strong></small>
+                  </h4>
+                  {{ course.description }}<br>
+                  Le: {{ course.date }}
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endblock %}
