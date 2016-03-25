@@ -49,8 +49,7 @@ class CvController extends Controller
             ->add('name', TextType::class, array(
                 'label' => 'Nom',))
             ->add('email', EmailType::class, array(
-                'label' => 'Email',
-                'value' => $this->getUser()->getEmail(),))
+                'label' => 'Email',))
             ->add('subject', TextType::class, array(
                 'label' => 'Sujet',))
             ->add('message', TextareaType::class, array(
